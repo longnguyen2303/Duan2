@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<form:form action="/mau-sac/update/{mausac.ma}" method="post"
+		<form:form action="/mau-sac/update/{mausac.id}" method="post"
 			modelAttribute="mausac">
 			<div>
 				<label class="form-label">Mã</label>

@@ -33,7 +33,7 @@
 						<td>${ms.lastModifiedDate}</td>
 						<td><a type="button" href="/mau-sac/delete/${ms.id}"
 							class="btn btn-danger">Delete</a> <a type="button"
-							href="/mau-sac/form-update/${ms.ma}" class="btn btn-primary">Update</a>
+							href="/mau-sac/form-update/${ms.id}" class="btn btn-primary">Update</a>
 					</tr>
 				</c:forEach>
 			</tbody>

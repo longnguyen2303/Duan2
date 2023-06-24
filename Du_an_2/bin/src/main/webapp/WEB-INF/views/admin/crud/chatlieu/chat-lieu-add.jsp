@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" language="java"%>
-<%-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>Add</title>
@@ -12,20 +12,23 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Add</h1>
-		<form action="/chat-lieu/add" method="post">
+		<form:form action="/chat-lieu/add" method="post" modelAttribute="chatlieu">
 			<div>
-				<label class="form-label">Mã</label> <input class="form-control" />
-
-				<errors cssStyle="color: red;font-weight: bold" />
+				<label class="form-label">Mã</label>
+				<form:input class="form-control" path="ma" />
+				<%--        <c:if test="${thongbao != ''}">--%>
+				<%--            <p style="color: red;font-weight: bold">${thongbao}</p>--%>
+				<%--        </c:if>--%>
+				<form:errors path="ma" cssStyle="color: red;font-weight: bold" />
 			</div>
 			<div>
-				<label class="form-label">Tên</label> <input class="form-control" />
-				<errors cssStyle="color: red;font-weight: bold" />
+				<label class="form-label">Tên</label>
+				<form:input class="form-control" path="ten" />
+				<form:errors path="ten" cssStyle="color: red;font-weight: bold" />
 			</div>
 			<br>
 			<button class="btn btn-success">Thêm</button>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

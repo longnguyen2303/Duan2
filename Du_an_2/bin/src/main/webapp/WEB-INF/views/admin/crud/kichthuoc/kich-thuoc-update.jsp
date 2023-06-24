@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" language="java"%>
-<%-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>Update</title>
@@ -13,15 +13,17 @@
 <body>
 	<div class="container">
 		<h1>Update</h1>
-		<form action="/kich-thuoc/update" method="post">
+		<form action="/kich-thuoc/update" method="post" >
 			<div>
-				<label class="form-label">Mã</label> <input class="form-control" />
+				<label class="form-label">Mã</label>
+				<form:input class="form-control" value="${update.ma}"/>
 
-				<errors cssStyle="color: red;font-weight: bold" />
+				<form:errors cssStyle="color: red;font-weight: bold" />
 			</div>
 			<div>
-				<label class="form-label">Tên</label> <input class="form-control" />
-				<errors cssStyle="color: red;font-weight: bold" />
+				<label class="form-label">Tên</label>
+				<form:input class="form-control" value="${update.ten}"/>
+				<form:errors path="ten" cssStyle="color: red;font-weight: bold" />
 			</div>
 			<div>
 				<label class="form-label">Trạng Thái</label>

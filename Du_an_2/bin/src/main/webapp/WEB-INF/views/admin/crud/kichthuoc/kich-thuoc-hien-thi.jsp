@@ -1,5 +1,5 @@
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page pageEncoding="utf-8" language="java"%>
 <html>
 <head>
@@ -24,32 +24,33 @@
 				<th colspan="1">Action</th>
 			</thead>
 			<tbody>
-				<!-- <c:forEach> -->
+				<c:forEach items="${listKichThuoc.content}" var="kt" varStatus="status">
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>${status.index + 1}</td>
+					<td>${kt.ma}</td>
+					<td>${kt.ten}</td>
+					<td>${kt.trangThaiXoa}</td>
+					<td>${kt.createdDate}</td>
+					<td>${kt.lastModifiedDate}</td>
 					<td>
-						<%-- <a type="button" href="/kich-thuoc/delete/${ms.id}"
-						class="btn btn-danger">Delete</a --%> <a type="button"
-						href="/kich-thuoc/form-update" class="btn btn-success">Update</a>
+						 <a type="button" href="/kich-thuoc/delete/${kt.ma}"
+						class="btn btn-danger">Delete</a>
+						  <a type="button"
+						href="/kich-thuoc/form-update/${kt.ma}" class="btn btn-success">Update</a>
 				</tr>
-				<!-- </c:forEach> -->
+				 </c:forEach>
 			</tbody>
 		</table>
 		<br>
-		<%-- <div>
-			<c:if test="${listMau.totalPages - 1 >= 0}">
+		<div>
+			<c:if test="${listKichThuoc.totalPages - 1 >= 0}">
 				<nav style="font-weight: bold;" aria-label="Page navigation example">
 					<ul class="pagination">
-						<c:forEach begin="0" end="${ listMau.totalPages -1}"
+						<c:forEach begin="0" end="${ listKichThuoc.totalPages -1}"
 							varStatus="loop">
 							<li class="page-item"><a style="color: red"
 								class="page-link"
-								href="/mau-sac/danh-sach?page=${loop.begin + loop.count - 1}">
+								href="/kich-thuoc/danh-sach?page=${loop.begin + loop.count - 1}">
 									${loop.begin + loop.count } </a></li>
 						</c:forEach>
 					</ul>
@@ -62,7 +63,7 @@
 				<input type="file" name="file" /> <input type="submit"
 					value="Import" />
 			</form>
-		</div> --%>
+		</div>
 		<br> <a type="button" class="btn btn-success"
 			href="/kich-thuoc/form-add">Add</a>
 	</div>

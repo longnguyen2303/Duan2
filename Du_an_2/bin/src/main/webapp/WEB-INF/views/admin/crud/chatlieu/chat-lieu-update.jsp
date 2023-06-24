@@ -13,27 +13,29 @@
 <body>
 	<div class="container">
 		<h1>Update</h1>
-		<form action="/chat-lieu/update" method="post">
+		<form action="/chat-lieu/update/${update.ma}" method="post">
 			<div>
-				<label class="form-label">Mã</label> <input class="form-control" />
+				<label class="form-label">Mã</label>
+				 <form:input class="form-control" value="${update.ma}"/>
 
-				<errors cssStyle="color: red;font-weight: bold" />
+				<form:errors path="ma" cssStyle="color: red;font-weight: bold" />
 			</div>
 			<div>
-				<label class="form-label">Tên</label> <input class="form-control" />
+				<label class="form-label">Tên</label>
+				 <form:input class="form-control" value="${update.ten}"/>
 				<errors cssStyle="color: red;font-weight: bold" />
 			</div>
 			<div>
 				<label class="form-label">Trạng Thái</label>
 				<div class="form-check">
 					<input class="form-check-input" type="radio"
-						name="flexRadioDefault" id="flexRadioDefault1"> <label
+						name="trangthai" id="flexRadioDefault1"> <label
 						class="form-check-label" for="flexRadioDefault1"> Default
 						radio </label>
 				</div>
 				<div class="form-check">
 					<input class="form-check-input" type="radio"
-						name="flexRadioDefault" id="flexRadioDefault2" checked> <label
+						name="trangthai" id="flexRadioDefault2" checked> <label
 						class="form-check-label" for="flexRadioDefault2"> Default
 						checked radio </label>
 				</div>

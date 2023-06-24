@@ -1,4 +1,4 @@
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> --%>
 <%@ page pageEncoding="utf-8" language="java"%>
 <html>
@@ -24,32 +24,32 @@
 				<th colspan="1">Action</th>
 			</thead>
 			<tbody>
-				<!-- <c:forEach> -->
+				 <c:forEach items="${listChatLieu.content}"  var="chatlieu" varStatus="status">
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>${status.index +1}</td>
+					<td>${chatlieu.ma}</td>
+					<td>${chatlieu.ten}</td>
+					<td>${chatlieu.trangThaiXoa}</td>
+					<td>${chatlieu.createdDate}</td>
+					<td>${chatlieu.lastModifiedDate}</td>
 					<td>
-						<%-- <a type="button" href="/mau-sac/delete/${ms.id}"
-						class="btn btn-danger">Delete</a --%> <a type="button"
-						href="/chat-lieu/form-update" class="btn btn-success">Update</a>
+						<a type="button" href="/chat-lieu/delete/${chatlieu.ma}"
+						class="btn btn-danger">Delete</a> <a type="button"
+						href="/chat-lieu/form-update/${chatlieu.ma}" class="btn btn-success">Update</a>
 				</tr>
-				<!-- </c:forEach> -->
+				 </c:forEach>
 			</tbody>
 		</table>
 		<br>
-		<%-- <div>
-			<c:if test="${listMau.totalPages - 1 >= 0}">
+		 <div>
+			<c:if test="${listChatLieu.totalPages - 1 >= 0}">
 				<nav style="font-weight: bold;" aria-label="Page navigation example">
 					<ul class="pagination">
-						<c:forEach begin="0" end="${ listMau.totalPages -1}"
+						<c:forEach begin="0" end="${listChatLieu.totalPages -1}"
 							varStatus="loop">
 							<li class="page-item"><a style="color: red"
 								class="page-link"
-								href="/mau-sac/danh-sach?page=${loop.begin + loop.count - 1}">
+								href="/chat-lieu/danh-sach?page=${loop.begin + loop.count - 1}">
 									${loop.begin + loop.count } </a></li>
 						</c:forEach>
 					</ul>
@@ -57,12 +57,12 @@
 			</c:if>
 		</div>
 		<div>
-			<form method="post" action="/mau-sac/import"
+			<form method="post" action="/chat-lieu/import"
 				enctype="multipart/form-data">
 				<input type="file" name="file" /> <input type="submit"
 					value="Import" />
 			</form>
-		</div> --%>
+		</div>
 		<br> <a type="button" class="btn btn-success"
 			href="/chat-lieu/form-add">Add</a>
 	</div>
