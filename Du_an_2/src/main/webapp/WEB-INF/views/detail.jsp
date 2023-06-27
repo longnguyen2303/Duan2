@@ -93,40 +93,7 @@
 			</div>
 		</div>
 
-		<div>
-			<div id="demo" class="carousel slide" data-ride="carousel">
 
-				<!-- Indicators -->
-				<ul class="carousel-indicators">
-					<li data-target="#demo" data-slide-to="0" class="active"></li>
-					<li data-target="#demo" data-slide-to="1"></li>
-					<li data-target="#demo" data-slide-to="2"></li>
-				</ul>
-
-				<!-- The slideshow -->
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="../../images/slideshow2.png" alt="giaydep" width="100%"
-							height="550px">
-					</div>
-					<div class="carousel-item">
-						<img src="../../images/slideshow1.jpg" alt="giaydep" width="100%"
-							height="550px">
-					</div>
-					<div class="carousel-item">
-						<img src="../../images/slideshow3.jpg" alt="giaydep" width="100%"
-							height="550px">
-					</div>
-				</div>
-
-				<!-- Left and right controls -->
-				<a class="carousel-control-prev" href="#demo" data-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-				</a> <a class="carousel-control-next" href="#demo" data-slide="next">
-					<span class="carousel-control-next-icon"></span>
-				</a>
-			</div>
-		</div>
 	</header>
 	<br>
 
@@ -166,59 +133,62 @@
 			</div>
 		</nav>
 	</header> -->
-	<div class="container">
-
-		<h3 style="font-weight: bold; color: black; margin-bottom: 30px;">TOP
-			SẢN PHẨM BÁN CHẠY</h3>
-
-		<div class="row text-center">
-			<c:forEach items="${listCTSP.content}" var="ctsp">
-				<div class="card" style="width: 18rem; margin-left: 20px">
-					<a href="/sneaker/detail/${ctsp.id}"> <img
-						src="https://ananas.vn/wp-content/uploads/Pro_AV00167_2-500x500.jpeg"
-						class="card-img-top">
-					</a>
-					<div class="card-body">
-						<h5 class="card-title">${ctsp.sanPham.ten}</h5>
-						<p class="card-text">${ctsp.giaBan}VND</p>
-						<a href="#" class="btn btn-dark">Add to cart</a>
-					</div>
-
+	<main>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<img class="card-img-top"
+						src="https://ananas.vn/wp-content/uploads/Pro_AV00167_2-500x500.jpeg" />
 				</div>
-			</c:forEach>
-			<div>
-				<c:if test="${listCTSP.totalPages - 1 >= 0}">
-					<nav style="font-weight: bold;"
-						aria-label="Page navigation example">
-						<ul class="pagination">
-							<c:forEach begin="0" end="${listCTSP.totalPages -1}"
-								varStatus="loop">
-								<li class="page-item"><a style="color: red"
-									class="page-link"
-									href="/sneaker/trang-chu?page=${loop.begin + loop.count - 1}">
-										${loop.begin + loop.count } </a></li>
-							</c:forEach>
-						</ul>
-					</nav>
-				</c:if>
+				<div class="col-lg-6">
+					<h1>${detail.sanPham.ten}</h1>
+					<br />
+					<p>Mã sản phẩm: ${detail.id }</p>
+
+					<p>Hãng: ${detail.hang.ten }</p>
+
+					<p>Chất liệu: ${detail.chatLieu.ten }</p>
+					<div>
+						<span style="font-size: 30px">Giá bán: ${detail.giaBan}</span> <span>VND</span>
+					</div>
+					<p></p>
+					<a href="" class="btn btn-dark">Thêm vào giỏ hàng</a>
+				</div>
+			</div>
+
+		</div>
+		<br> <br>
+		<h1>Sản phẩm tương tự</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-3" th:each="product : ${list}">
+					<div class="card" style="width: 18rem;">
+						<a th:href="@{'/detail/' + ${product.id}}"> <img
+							class="card-img-top" th:src="${product.image}"></a>
+						<div class="card-body">
+							<h5 class="card-title" th:text="${product.name}"></h5>
+							<p style="text-align: center;">
+								<span style="text-align: center" class="card-text"
+									th:text="${product.price}"></span><span> VND</span>
+							</p>
+							<p style="text-align: center">
+								<a class="btn btn-dark"> Add to cart</a>
+							</p>
+						</div>
+
+
+					</div>
+				</div>
 			</div>
 		</div>
+	</main>
+	<%--                footer--%>
 
-		<h3
-			style="font-weight: bold; color: black; margin-top: 30px; margin-bottom: 30px;">SẢN
-			PHẨM MỚI</h3>
-		<div class="sanphammoi col-lg-12">
-			<div class="row text-center" style="margin-bottom: 10px;"></div>
+	<footer class="col-lg-12"
+		style="background-color: grey; color: white; font-weight: bold; text-align: center; padding: 10px; margin-top: 10px;">
+		<em>@www.sneakerUyTin.com.vn shop Giày uy tín số 1 Việt Nam-SĐT:
+			0323032003</em>
+	</footer>
 
-			<%--                footer--%>
-
-			<footer class="col-lg-12"
-				style="background-color: grey; color: white; font-weight: bold; text-align: center; padding: 10px; margin-top: 10px;">
-				<em>@www.sneakerUyTin.com.vn shop Giày uy tín số 1 Việt
-					Nam-SĐT: 0323032003</em>
-			</footer>
-		</div>
-	</div>
-	</div>
 </body>
 </html>

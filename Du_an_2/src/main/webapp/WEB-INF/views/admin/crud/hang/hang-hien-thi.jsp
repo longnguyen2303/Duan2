@@ -55,7 +55,7 @@
 		</c:if>
 	</div>
 	<div>
-		<form method="post" action="/mau-sac/import"
+		<form method="post" action="/hang/import"
 			  enctype="multipart/form-data">
 			<input type="file" name="file" /> <input type="submit"
 													 value="Import" />

@@ -50,8 +50,7 @@ public class HangController {
 	}
 
 	@PostMapping("add")
-	public String add(@Valid @ModelAttribute("hang") HangViewModel hangViewModel, BindingResult result,
-					  Model model) {
+	public String add(@Valid @ModelAttribute("hang") HangViewModel hangViewModel, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "admin/crud/hang/hang-add";
 		} else {
@@ -65,12 +64,12 @@ public class HangController {
 
 	@PostMapping("import")
 	public String importFile(Model model, @RequestParam("file") MultipartFile file,
-							 @RequestParam(name = "page", defaultValue = "0") Integer pageNo) throws IOException, SQLException {
+			@RequestParam(name = "page", defaultValue = "0") Integer pageNo) throws IOException, SQLException {
 		if (file == null || file.isEmpty()) {
 			Pageable pageable = PageRequest.of(pageNo, 5, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
 			Page<Hang> page = hangRepository.findAll(pageable);
-			model.addAttribute("listMau", page);
-			return "admin/crud/hang/mau-hien-thi";
+			model.addAttribute("listHang", page);
+			return "admin/crud/hang/hang-hien-thi";
 		}
 		InputStream inputStream = file.getInputStream();
 		Workbook workbook = new XSSFWorkbook(inputStream);
@@ -88,7 +87,7 @@ public class HangController {
 			}
 		}
 		workbook.close();
-		return "redirect:/mau-sac/danh-sach";
+		return "redirect:/hang/danh-sach";
 	}
 
 	@GetMapping("form-update/{id}")
