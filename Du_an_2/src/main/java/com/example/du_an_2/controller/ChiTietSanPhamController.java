@@ -83,7 +83,7 @@ public class ChiTietSanPhamController {
                       @RequestParam("kichThuoc") String idkichThuoc,
                       @RequestParam("nhaCungCap") String idncc) {
         if(result.hasErrors()){
-            model.addAttribute("listMau", mauSacRepository.findAll());
+            model.addAttribute("listMauSac", mauSacRepository.findAll());
             model.addAttribute("listHang", hangRepository.findAll());
             model.addAttribute("listNCC", nhaCungCapRepository.findAll());
             model.addAttribute("listSP", sanPhamRepository.findAll());
@@ -110,7 +110,7 @@ public class ChiTietSanPhamController {
             chiTietSP.setMoTa(chiTietSPViewModel.getMoTa());
             this.ctspRepository.save(chiTietSP);
         }
-        return "redirect:/ctsp/danh-sach";
+        return "redirect:/sneaker/product";
     }
 
     @GetMapping("form-update")

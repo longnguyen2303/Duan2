@@ -1,4 +1,3 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -22,11 +21,7 @@
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css"/>
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-            crossorigin="anonymous">
+
     <!-- fonts style -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <!-- range slider -->
@@ -222,96 +217,81 @@
 
 <section style="margin-top: 100px">
     <div class="container">
-        <h1 style="font-weight: bold;color: red;margin-left: 350px">Thêm Sản Phẩm</h1>
-        <form:form action="/ctsp/add" method="post" modelAttribute="ct">
-            <div>
-                <label class="form-label">Sản phẩm</label>
-                <form:select path="sanPham"
-                             class="form-select" aria-label="Default select example">
-                    <form:options items="${listSP}" itemLabel="ten" itemValue="id"/>
-                </form:select>
-            </div>
-            <div>
-                <label class="form-label">Hãng</label>
-                <form:select path="hang"
-                             class="form-select" aria-label="Default select example">
-                    <form:options items="${listHang}" itemLabel="ten" itemValue="id"/>
-                </form:select>
-            </div>
-            <div>
-                <label class="form-label">Kích thước</label>
-                <form:select path="kichThuoc"
-                             class="form-select" aria-label="Default select example">
-                    <form:options items="${listKT}" itemLabel="ten" itemValue="id"/>
-                </form:select>
-            </div>
-            <div>
-                <label class="form-label">Màu sắc</label>
-                <form:select path="mauSac"
-                             class="form-select" aria-label="Default select example">
-                    <form:options items="${listMauSac}" itemValue="id" itemLabel="ten"/>
-                </form:select>
-            </div>
-            <div>
-                <label class="form-label">Nhà Cung Cấp</label>
-                <form:select path="nhaCungCap"
-                             class="form-select" aria-label="Default select example">
-                    <form:options items="${listNCC}" itemLabel="ten" itemValue="id"/>
-                </form:select>
-            </div>
-            <div>
-                <label class="form-label">Chất Liệu</label>
-                <form:select path="chatLieu"
-                             class="form-select" aria-label="Default select example">
-                    <form:options items="${listChatLieu}" itemLabel="ten" itemValue="id"/>
-                </form:select>
-            </div>
-            <div>
-                <label class="form-label">Số lượng</label>
-                <form:input type="number" path="soLuong" class="form-control"/>
-                <form:errors path="soLuong" cssStyle="font-weight: bold;color: red"/>
-            </div>
-            <div>
-                <label class="form-label">Đơn giá</label>
-                <form:input type="number" path="donGia" class="form-control"/>
-                <form:errors path="donGia" cssStyle="font-weight: bold;color: red"/>
-            </div>
-            <div>
-                <label class="form-label">Giá bán</label>
-                <form:input type="number" path="giaBan" class="form-control"/>
-                <form:errors path="giaBan" cssStyle="font-weight: bold;color: red"/>
-            </div>
-            <div>
-                <label class="form-label">Mô tả</label>
-                <form:input path="moTa" class="form-control"/>
-                <form:errors path="moTa" cssStyle="font-weight: bold;color: red"/>
-            </div>
-            <br>
-            <button class="btn btn-success">Thêm</button>
-        </form:form>
+        <div style="float: right;margin-bottom: 20px">
+            <from class="search_form">
+                <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                <button style="background-color: #006cfa" type="submit">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </from>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <th>Mã Sản Phẩm</th>
+            <th>Tên Sản Phẩm</th>
+            <th>Hãng</th>
+            <th>Kích thước</th>
+            <th>Màu sắc</th>
+            <th>Chất liệu</th>
+            <th>Số lượng</th>
+            <th>Giá bán</th>
+            <th colspan="1">Action</th>
+            </thead>
+            <tbody>
+            <c:forEach items="${listCTSP.content}" var="ct">
+                <tr>
+                    <td>${ct.sanPham.ma}</td>
+                    <td>${ct.sanPham.ten}</td>
+                    <td>${ct.hang.ten}</td>
+                    <td>${ct.kichThuoc.ten}</td>
+                    <td>${ct.mauSac.ten}</td>
+                    <td>${ct.chatLieu.ten}</td>
+                    <td>${ct.soLuong}</td>
+                    <td>${ct.giaBan}</td>
+                    <td>
+                        <a type="button" href="/ctsp/delete/${ct.id}"
+                           class="btn btn-danger">Hủy</a>
+                        <a type="button"
+                           href="/ctsp/form-update"
+                           class="btn btn-primary">Cập nhật</a>
+                    </td>
+<%--                    <td>--%>
+<%--                        <a type="button"--%>
+<%--                           href="/ctsp/form-update"--%>
+<%--                           class="btn btn-success">Cập nhật</a>--%>
+<%--                    </td>--%>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        <br>
+        <div style="float: right">
+            <a type="button" class="btn btn-success"
+               href="/ctsp/form-add">Thêm sản phẩm</a>
+        </div>
     </div>
-    <%-- <div>
-        <c:if test="${listMau.totalPages - 1 >= 0}">
+    <div style="margin-left: 160px">
+        <c:if test="${listCTSP.totalPages - 1 >= 0}">
             <nav style="font-weight: bold;" aria-label="Page navigation example">
                 <ul class="pagination">
-                    <c:forEach begin="0" end="${ listMau.totalPages -1}"
+                    <c:forEach begin="0" end="${ listCTSP.totalPages -1}"
                         varStatus="loop">
                         <li class="page-item"><a style="color: red"
                             class="page-link"
-                            href="/mau-sac/danh-sach?page=${loop.begin + loop.count - 1}">
+                            href="/sneaker/product?page=${loop.begin + loop.count - 1}">
                                 ${loop.begin + loop.count } </a></li>
                     </c:forEach>
                 </ul>
             </nav>
         </c:if>
     </div>
-    <div>
-        <form method="post" action="/mau-sac/import"
-            enctype="multipart/form-data">
-            <input type="file" name="file" /> <input type="submit"
-                value="Import" />
-        </form>
-    </div> --%>
+<%--    <div>--%>
+<%--        <form method="post" action="/mau-sac/import"--%>
+<%--            enctype="multipart/form-data">--%>
+<%--            <input type="file" name="file" /> <input type="submit"--%>
+<%--                value="Import" />--%>
+<%--        </form>--%>
+<%--    </div>--%>
 </section>
 
 <!-- end product section -->

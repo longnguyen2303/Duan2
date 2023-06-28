@@ -41,7 +41,7 @@
 							<ul class="nav">
 
 								<!-- 		<li class="nav-item "><a class="nav-link nav-link-1 active"
-									aria-current="page" href="index.html">Welcome <span>
+									aria-current="page" href="indext.jsp">Welcome <span>
 											Name: <strong></strong>
 									</span>
 

@@ -30,8 +30,17 @@ public class TestController {
 		Page<ChiTietSP> page = ctspRepository.findAll(pageable);
 
 		model.addAttribute("listCTSP", page);
-		return "test";
+		return "indext";
 	}
+
+	@GetMapping("product")
+	public String product(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
+		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
+		Page<ChiTietSP> page = ctspRepository.findAll(pageable);
+		model.addAttribute("listCTSP", page);
+		return "product";
+	}
+
 
 	@GetMapping("detail/{id}")
 	public String detail(Model model, @PathVariable UUID id) {
