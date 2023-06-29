@@ -1,19 +1,7 @@
 package com.example.du_an_2.controller;
 
-import com.example.du_an_2.entities.MauSac;
-import com.example.du_an_2.entities.SanPham;
-import com.example.du_an_2.entities.KichThuoc;
-import com.example.du_an_2.entities.ChiTietSP;
-import com.example.du_an_2.entities.ChatLieu;
-import com.example.du_an_2.entities.NhaCungCap;
-import com.example.du_an_2.entities.Hang;
-import com.example.du_an_2.repositories.MauSacRepository;
-import com.example.du_an_2.repositories.KichThuocRepository;
-import com.example.du_an_2.repositories.HangRepository;
-import com.example.du_an_2.repositories.ChatLieuRepository;
-import com.example.du_an_2.repositories.NhaCungCapRepository;
-import com.example.du_an_2.repositories.CTSPRepository;
-import com.example.du_an_2.repositories.SanPhamRepository;
+import com.example.du_an_2.entities.*;
+import com.example.du_an_2.repositories.*;
 import com.example.du_an_2.viewmodel.ChiTietSPViewModel;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Controller
@@ -53,6 +43,9 @@ public class ChiTietSanPhamController {
     @Autowired
     private CTSPRepository ctspRepository;
 
+    @Autowired
+    private HinhAnhRepository hinhAnhRepository;
+
     @GetMapping("danh-sach")
     public String hienthi(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
         Pageable pageable = PageRequest.of(pageNo, 5, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
@@ -64,6 +57,10 @@ public class ChiTietSanPhamController {
     @GetMapping("form-add")
     public String formadd(Model model) {
         ChiTietSPViewModel chiTietSPViewModel = new ChiTietSPViewModel();
+        chiTietSPViewModel.setSoLuong(100);
+        chiTietSPViewModel.setDonGia(BigDecimal.valueOf(200000));
+        chiTietSPViewModel.setGiaBan(BigDecimal.valueOf(300000));
+        chiTietSPViewModel.setMoTa("Không có mô tả");
         model.addAttribute("listHang", hangRepository.findAll());
         model.addAttribute("listNCC", nhaCungCapRepository.findAll());
         model.addAttribute("listSP", sanPhamRepository.findAll());
@@ -81,7 +78,8 @@ public class ChiTietSanPhamController {
                       @RequestParam("chatLieu") String idchatLieu,
                       @RequestParam("hang") String idhang,
                       @RequestParam("kichThuoc") String idkichThuoc,
-                      @RequestParam("nhaCungCap") String idncc) {
+                      @RequestParam("nhaCungCap") String idncc,
+                      @RequestParam("anh") MultipartFile linkAnh) {
         if(result.hasErrors()){
             model.addAttribute("listMauSac", mauSacRepository.findAll());
             model.addAttribute("listHang", hangRepository.findAll());
@@ -108,6 +106,9 @@ public class ChiTietSanPhamController {
             chiTietSP.setDonGia(chiTietSPViewModel.getDonGia());
             chiTietSP.setGiaBan(chiTietSPViewModel.getGiaBan());
             chiTietSP.setMoTa(chiTietSPViewModel.getMoTa());
+            if(!linkAnh.isEmpty()){
+                chiTietSP.setHinhAnh(linkAnh.getOriginalFilename());
+            }
             this.ctspRepository.save(chiTietSP);
         }
         return "redirect:/sneaker/product";

@@ -221,11 +221,11 @@
 <%--        </h2>--%>
 <%--      </div>--%>
       <div class="row">
-        <c:forEach items="${listCTSP.content}" var="sp">
+        <c:forEach items="${listCTSP}" var="sp">
         <div class="col-sm-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="../../images/slideshow1.jpg" alt="">
+              <img src="../../images/${sp.hinhAnh}" alt="">
               <a href="/sneaker/detail/${sp.id}" class="add_cart_btn">
                 <span>
                   Detail
@@ -243,7 +243,7 @@
               </h5>
               <div class="product_info">
                 <h5>
-                  <span>Giá bán</span> ${sp.giaBan}
+                  <span>Giá bán: </span> <fmt:formatNumber type="currency" value="${sp.giaBan}" pattern="#,###"/>
                 </h5>
                 <div class="star_container">
                   <i class="fa fa-star" aria-hidden="true"></i>

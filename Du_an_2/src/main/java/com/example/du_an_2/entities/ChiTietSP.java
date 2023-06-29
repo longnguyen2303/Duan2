@@ -61,6 +61,9 @@ public class ChiTietSP extends AuditEntity {
     @Column(name = "gia_ban")
     private BigDecimal giaBan;
 
+    @Column(name = "hinh_anh")
+    private String hinhAnh;
+
     @Column(name = "mo_ta")
     private String moTa;
 

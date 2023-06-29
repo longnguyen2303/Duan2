@@ -25,11 +25,10 @@ public class TestController {
 	CTSPRepository ctspRepository;
 
 	@GetMapping("trang-chu")
-	public String trangChu(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
-		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
-		Page<ChiTietSP> page = ctspRepository.findAll(pageable);
-
-		model.addAttribute("listCTSP", page);
+	public String trangChu(Model model) {
+//		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
+//		Page<ChiTietSP> page = ctspRepository.findAll(pageable);
+		model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.ASC, "lastModifiedDate")));
 		return "indext";
 	}
 
@@ -37,6 +36,14 @@ public class TestController {
 	public String product(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
 		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
 		Page<ChiTietSP> page = ctspRepository.findAll(pageable);
+		model.addAttribute("listCTSP", page);
+		return "product";
+	}
+
+	@GetMapping("product/search")
+	public String productSearch(Model model, @RequestParam("inputsearch") String input, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
+		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
+		Page<ChiTietSP> page = ctspRepository.getListBySearch(input, pageable);
 		model.addAttribute("listCTSP", page);
 		return "product";
 	}

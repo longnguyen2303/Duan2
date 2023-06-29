@@ -12,7 +12,7 @@
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <!-- Site Metas -->
-    <link rel="icon" href="../../images/background.jpg" type="image/gif"/>
+    <link rel="icon" href="../../../../../images/background.jpg" type="image/gif"/>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
@@ -21,7 +21,7 @@
 
 
     <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.css"/>
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -32,12 +32,12 @@
     <!-- range slider -->
 
     <!-- font awesome style -->
-    <link href="../../css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="../../../../../css/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- Custom styles for this template -->
-    <link href="../../css/style.css" rel="stylesheet"/>
+    <link href="../../../../../css/style.css" rel="stylesheet"/>
     <!-- responsive style -->
-    <link href="../../css/responsive.css" rel="stylesheet"/>
+    <link href="../../../../../css/responsive.css" rel="stylesheet"/>
 
 </head>
 
@@ -223,7 +223,7 @@
 <section style="margin-top: 100px">
     <div class="container">
         <h1 style="font-weight: bold;color: red;margin-left: 350px">Thêm Sản Phẩm</h1>
-        <form:form action="/ctsp/add" method="post" modelAttribute="ct">
+        <form:form action="/ctsp/add" method="post" modelAttribute="ct" enctype="multipart/form-data">
             <div>
                 <label class="form-label">Sản phẩm</label>
                 <form:select path="sanPham"
@@ -287,6 +287,10 @@
                 <form:errors path="moTa" cssStyle="font-weight: bold;color: red"/>
             </div>
             <br>
+            <div>
+                <input type="file" name="anh" id="file" class="inputfile" />
+                <label for="file">Thêm ảnh</label>
+            </div>
             <button class="btn btn-success">Thêm</button>
         </form:form>
     </div>
@@ -435,11 +439,11 @@
 <!-- footer section -->
 
 <!-- jQery -->
-<script src="../../js/jquery-3.4.1.min.js"></script>
+<script src="../../../../../js/jquery-3.4.1.min.js"></script>
 <!-- bootstrap js -->
-<script src="../../js/bootstrap.js"></script>
+<script src="../../../../../js/bootstrap.js"></script>
 <!-- custom js -->
-<script src="../../js/custom.js"></script>
+<script src="../../../../../js/custom.js"></script>
 
 
 </body>

@@ -216,38 +216,38 @@
 <!-- product section -->
 
 <section style="margin-top: 100px">
-    <div class="container">
+<main>
         <div style="float: right;margin-bottom: 20px">
-            <from class="search_form">
-                <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+            <form action="/sneaker/product/search" method="get" class="search_form">
+                <input type="text" name="inputsearch" class="form-control" placeholder="Tìm kiếm sản phẩm...">
                 <button style="background-color: #006cfa" type="submit">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
-            </from>
+            </form>
         </div>
         <table class="table table-hover">
             <thead>
-            <th>Mã Sản Phẩm</th>
+            <th>STT</th>
+            <th>Image</th>
             <th>Tên Sản Phẩm</th>
             <th>Hãng</th>
             <th>Kích thước</th>
-            <th>Màu sắc</th>
             <th>Chất liệu</th>
             <th>Số lượng</th>
             <th>Giá bán</th>
             <th colspan="1">Action</th>
             </thead>
             <tbody>
-            <c:forEach items="${listCTSP.content}" var="ct">
+            <c:forEach items="${listCTSP.content}" var="ct" varStatus="stt">
                 <tr>
-                    <td>${ct.sanPham.ma}</td>
-                    <td>${ct.sanPham.ten}</td>
+                    <td>${stt.index + 1}</td>
+                    <td><img src="../../images/${ct.hinhAnh}" height="100px" width="150px"></td>
+                    <td><p>${ct.sanPham.ten} ${ct.mauSac.ten}</p></td>
                     <td>${ct.hang.ten}</td>
                     <td>${ct.kichThuoc.ten}</td>
-                    <td>${ct.mauSac.ten}</td>
                     <td>${ct.chatLieu.ten}</td>
                     <td>${ct.soLuong}</td>
-                    <td>${ct.giaBan}</td>
+                    <td><fmt:formatNumber type="currency" value="${ct.giaBan}" pattern="#,###"/>VNĐ</td>
                     <td>
                         <a type="button" href="/ctsp/delete/${ct.id}"
                            class="btn btn-danger">Hủy</a>
@@ -269,8 +269,8 @@
             <a type="button" class="btn btn-success"
                href="/ctsp/form-add">Thêm sản phẩm</a>
         </div>
-    </div>
-    <div style="margin-left: 160px">
+</main>
+    <div>
         <c:if test="${listCTSP.totalPages - 1 >= 0}">
             <nav style="font-weight: bold;" aria-label="Page navigation example">
                 <ul class="pagination">

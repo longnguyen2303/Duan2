@@ -219,7 +219,7 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<img class="card-img-top"
-						 src="../../images/slideshow1.jpg"/>
+						 src="../../images/${detail.hinhAnh}"/>
 				</div>
 				<div class="col-lg-6">
 					<h1>${detail.sanPham.ten}</h1>
@@ -230,8 +230,9 @@
 
 					<p>Chất liệu: ${detail.chatLieu.ten }</p>
 					<div>
-						<span style="font-size: 30px">Giá bán: ${detail.giaBan}</span> <span>VND</span>
+						<span style="font-size: 30px">Giá bán: <fmt:formatNumber type="currency" value="${detail.giaBan}" pattern="#,###"/></span> <span>VNĐ</span>
 					</div>
+					<p>Kho còn: ${detail.soLuong }</p>
 					<p></p>
 					<a href="" class="btn btn-dark">Thêm vào giỏ hàng</a>
 				</div>

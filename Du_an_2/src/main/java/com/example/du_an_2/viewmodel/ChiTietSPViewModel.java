@@ -34,6 +34,8 @@ public class ChiTietSPViewModel {
 
     private BigDecimal giaBan;
 
+    private String hinhAnh;
+
     @NotBlank(message = "Không được để trống trường này")
     private String moTa;
 
