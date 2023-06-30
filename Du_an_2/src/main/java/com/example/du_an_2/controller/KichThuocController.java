@@ -83,7 +83,7 @@ public class KichThuocController {
 			}
 		}
 		workbook.close();
-		return "admin/crud/kichthuoc/kich-thuoc-hien-thi";
+		return "redirect:/kich-thuoc/danh-sach";
 	}
 	@GetMapping("form-update")
 	public String formupdate(Model model, @PathVariable String ma) {

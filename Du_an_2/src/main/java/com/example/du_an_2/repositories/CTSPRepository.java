@@ -13,8 +13,9 @@ import java.util.UUID;
 @Repository
 public interface CTSPRepository extends JpaRepository<ChiTietSP, UUID> {
 
-	@Query("select a from ChiTietSP  a where a.sanPham.ten like concat('%' , ?1 , '%') or a.hang.ten like concat('%', ?1 , '%') ")
-	public Page<ChiTietSP> getListBySearch(String ten, Pageable pageable);
+	@Query("select a from ChiTietSP  a where a.sanPham.ten like concat('%' , ?1 , '%')" +
+			" or a.hang.ten like concat('%', ?1 , '%') or a.mauSac.ten like concat('%', ?1, '%') ")
+	Page<ChiTietSP> getListBySearch(String ten, Pageable pageable);
 
 	@Query(value = "SELECT * FROM chi_tiet_san_pham WHERE id_hang = ?1", nativeQuery = true)
 	List<ChiTietSP> getCTSPbyid(UUID id);

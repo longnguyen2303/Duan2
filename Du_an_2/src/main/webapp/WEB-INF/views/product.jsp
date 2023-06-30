@@ -107,7 +107,7 @@
                                 <a class="nav-link" href="#"> Giới thiệu</a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Sản phẩm</a>
+                                <a class="nav-link" href="/sneaker/productfilter">Sản phẩm</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/sneaker/product">Quản lý</a>
@@ -216,10 +216,11 @@
 <!-- product section -->
 
 <section style="margin-top: 100px">
-<main>
+    <main>
         <div style="float: right;margin-bottom: 20px">
             <form action="/sneaker/product/search" method="get" class="search_form">
-                <input type="text" name="inputsearch" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                <input type="text" name="inputsearch" value="${inputsearch}" class="form-control"
+                       placeholder="Tìm kiếm sản phẩm...">
                 <button style="background-color: #006cfa" type="submit">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
@@ -255,11 +256,11 @@
                            href="/ctsp/form-update"
                            class="btn btn-primary">Cập nhật</a>
                     </td>
-<%--                    <td>--%>
-<%--                        <a type="button"--%>
-<%--                           href="/ctsp/form-update"--%>
-<%--                           class="btn btn-success">Cập nhật</a>--%>
-<%--                    </td>--%>
+                        <%--                    <td>--%>
+                        <%--                        <a type="button"--%>
+                        <%--                           href="/ctsp/form-update"--%>
+                        <%--                           class="btn btn-success">Cập nhật</a>--%>
+                        <%--                    </td>--%>
                 </tr>
             </c:forEach>
             </tbody>
@@ -269,29 +270,33 @@
             <a type="button" class="btn btn-success"
                href="/ctsp/form-add">Thêm sản phẩm</a>
         </div>
-</main>
+    </main>
     <div>
         <c:if test="${listCTSP.totalPages - 1 >= 0}">
             <nav style="font-weight: bold;" aria-label="Page navigation example">
                 <ul class="pagination">
-                    <c:forEach begin="0" end="${ listCTSP.totalPages -1}"
-                        varStatus="loop">
-                        <li class="page-item"><a style="color: red"
-                            class="page-link"
-                            href="/sneaker/product?page=${loop.begin + loop.count - 1}">
-                                ${loop.begin + loop.count } </a></li>
-                    </c:forEach>
+                    <c:if test="${inputsearch != null || inputsearch != ''}">
+                        <c:forEach begin="0" end="${ listCTSP.totalPages -1}"
+                                   varStatus="loop">
+                            <li class="page-item">
+                                <a style="color: red"
+                                   class="page-link"
+                                   href="/sneaker/product/search?inputsearch=${inputsearch}&page=${loop.begin + loop.count - 1}">
+                                        ${loop.begin + loop.count } </a>
+                            </li>
+                        </c:forEach>
+                    </c:if>
                 </ul>
             </nav>
         </c:if>
     </div>
-<%--    <div>--%>
-<%--        <form method="post" action="/mau-sac/import"--%>
-<%--            enctype="multipart/form-data">--%>
-<%--            <input type="file" name="file" /> <input type="submit"--%>
-<%--                value="Import" />--%>
-<%--        </form>--%>
-<%--    </div>--%>
+    <%--    <div>--%>
+    <%--        <form method="post" action="/mau-sac/import"--%>
+    <%--            enctype="multipart/form-data">--%>
+    <%--            <input type="file" name="file" /> <input type="submit"--%>
+    <%--                value="Import" />--%>
+    <%--        </form>--%>
+    <%--    </div>--%>
 </section>
 
 <!-- end product section -->

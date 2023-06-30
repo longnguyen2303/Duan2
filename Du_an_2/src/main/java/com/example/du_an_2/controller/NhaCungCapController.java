@@ -68,7 +68,7 @@ public class NhaCungCapController {
             Pageable pageable = PageRequest.of(pageNo, 5, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
             Page<NhaCungCap> page = nhaCungCapRepository.findAll(pageable);
             model.addAttribute("listNCC", page);
-            return "ncc-hien-thi";
+            return "admin/crud/ncc/ncc-hien-thi";
         }
         InputStream inputStream = file.getInputStream();
         Workbook workbook = new XSSFWorkbook(inputStream);

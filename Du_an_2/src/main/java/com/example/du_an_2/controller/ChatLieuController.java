@@ -88,7 +88,7 @@ public class ChatLieuController {
             }
         }
         workbook.close();
-        return "admin/crud/chatlieu/chat-lieu-hien-thi";
+        return "redirect:/chat-lieu/danh-sach";
     }
 //    @GetMapping("delete/{ma}")
 //    public String deleteChatLieu(Model model, @PathVariable UUID id){

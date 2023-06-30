@@ -92,7 +92,7 @@
 								</li>
 								<li class="nav-item"><a class="nav-link" href="#"> Giới
 										thiệu</a></li>
-								<li class="nav-item active"><a class="nav-link" href="#">Sản
+								<li class="nav-item active"><a class="nav-link" href="/sneaker/productfilter">Sản
 										phẩm</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/sneaker/product">Quản lý</a></li>
@@ -202,22 +202,10 @@
 
 					<br>
 					<h4 style="font-weight: bold;">Giá</h4>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">An item</li>
-						<li class="list-group-item">A second item</li>
-						<li class="list-group-item">A third item</li>
-						<li class="list-group-item">A fourth item</li>
-						<li class="list-group-item">And a fifth one</li>
-					</ul>
-					<br>
-					<h4 style="font-weight: bold;">Chất liệu</h4>
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">An item</li>
-						<li class="list-group-item">A second item</li>
-						<li class="list-group-item">A third item</li>
-						<li class="list-group-item">A fourth item</li>
-						<li class="list-group-item">And a fifth one</li>
-					</ul>
+					<div style="margin-left: 20px">
+						<input type="radio" value="mintomax" name="giaCheck" checked/>Từ thấp đến cao<br>
+						<input type="radio" value="maxtomin" name="giaCheck" />Từ cao đến thấp
+					</div>
 					<br>
 					<h4 style="font-weight: bold;">Màu sắc</h4>
 					<ul class="list-group list-group-flush">

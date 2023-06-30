@@ -97,19 +97,19 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ">
 							<li class="nav-item active">
-								<a class="nav-link" href="indext.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+								<a class="nav-link" href="/sneaker/trang-chu">Trang chủ <span class="sr-only">(current)</span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="about.jsp"> Giới thiệu</a>
+								<a class="nav-link" href="#"> Giới thiệu</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="product.jsp">Sản phẩm</a>
+								<a class="nav-link" href="/sneaker/productfilter">Sản phẩm</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="why.jsp">Quản lý</a>
+								<a class="nav-link" href="/sneaker/product">Quản lý</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="testimonial.jsp">Thống kê</a>
+								<a class="nav-link" href="#">Thống kê</a>
 							</li>
 						</ul>
 					</div>

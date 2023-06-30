@@ -3,6 +3,7 @@ package com.example.du_an_2.controller;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.du_an_2.repositories.MauSacRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,21 +25,25 @@ import com.example.du_an_2.repositories.HangRepository;
 @RequestMapping("sneaker")
 public class TestController {
 	@Autowired
-	CTSPRepository ctspRepository;
+	private CTSPRepository ctspRepository;
+
 	@Autowired
-	HangRepository hangRepository;
+	private HangRepository hangRepository;
+
+	@Autowired
+	private MauSacRepository mauSacRepository;
 
 	@GetMapping("trang-chu")
 	public String trangChu(Model model) {
 //		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
 //		Page<ChiTietSP> page = ctspRepository.findAll(pageable);
-		model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.ASC, "lastModifiedDate")));
+		model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.DESC, "lastModifiedDate")));
 		return "indext";
 	}
 
 	@GetMapping("product")
 	public String product(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
-		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
+		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.DESC, "lastModifiedDate"));
 		Page<ChiTietSP> page = ctspRepository.findAll(pageable);
 		model.addAttribute("listCTSP", page);
 		return "product";
@@ -47,9 +52,10 @@ public class TestController {
 	@GetMapping("product/search")
 	public String productSearch(Model model, @RequestParam("inputsearch") String input,
 			@RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
-		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
+		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.DESC, "lastModifiedDate"));
 		Page<ChiTietSP> page = ctspRepository.getListBySearch(input, pageable);
 		model.addAttribute("listCTSP", page);
+		model.addAttribute("inputsearch", input);
 		return "product";
 	}
 
@@ -64,6 +70,7 @@ public class TestController {
 	public String filter1(Model model) {
 		List<Hang> list = hangRepository.findAll();
 		model.addAttribute("listHang", list);
+		model.addAttribute("listMau", this.mauSacRepository.findAll());
 		List<ChiTietSP> list1 = ctspRepository.findAll();
 		model.addAttribute("list", list1);
 		return "productfilter";
@@ -73,6 +80,7 @@ public class TestController {
 	public String filter(Model model, @PathVariable UUID id) {
 		List<Hang> list = hangRepository.findAll();
 		model.addAttribute("listHang", list);
+		model.addAttribute("listMau", this.mauSacRepository.findAll());
 
 		List<ChiTietSP> listbyHang = ctspRepository.getCTSPbyid(id);
 		model.addAttribute("listSpbyHang", listbyHang);
