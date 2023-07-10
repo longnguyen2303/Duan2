@@ -103,7 +103,7 @@
                   <a class="nav-link" href="product.jsp">Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="why.jsp">Why Us</a>
+                  <a class="nav-link" href="qlhoadon.jsp">Why Us</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="testimonial.jsp">Testimonial</a>
@@ -208,7 +208,7 @@
                 </a>
               </li>
               <li>
-                <a href="why.jsp">
+                <a href="qlhoadon.jsp">
                   Why Us
                 </a>
               </li>

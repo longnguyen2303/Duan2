@@ -112,9 +112,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/sneaker/product">Quản lý</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Thống kê</a>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="/sneaker/hoa-don">Bán hàng
+                            </a></li>
                         </ul>
                     </div>
                 </nav>
@@ -253,7 +252,7 @@
                         <a type="button" href="/ctsp/delete/${ct.id}"
                            class="btn btn-danger">Hủy</a>
                         <a type="button"
-                           href="/ctsp/form-update"
+                           href="/ctsp/form-update/${ct.id}"
                            class="btn btn-primary">Cập nhật</a>
                     </td>
                         <%--                    <td>--%>
@@ -362,7 +361,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="why.jsp">
+                            <a href="qlhoadon.jsp">
                                 Why Us
                             </a>
                         </li>

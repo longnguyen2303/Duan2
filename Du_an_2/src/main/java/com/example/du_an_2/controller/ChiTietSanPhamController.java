@@ -114,8 +114,25 @@ public class ChiTietSanPhamController {
         return "redirect:/sneaker/product";
     }
 
-    @GetMapping("form-update")
-    public String formupdate(Model model) {
+    @GetMapping("form-update/{id}")
+    public String formupdate(Model model, @PathVariable("id") ChiTietSP chiTietSP, ChiTietSPViewModel chiTietSPViewModel) {
+        model.addAttribute("listMauSac", mauSacRepository.findAll());
+        model.addAttribute("listHang", hangRepository.findAll());
+        model.addAttribute("listNCC", nhaCungCapRepository.findAll());
+        model.addAttribute("listSP", sanPhamRepository.findAll());
+        model.addAttribute("listKT", kichThuocRepository.findAll());
+        model.addAttribute("listChatLieu", chatLieuRepository.findAll());
+        chiTietSPViewModel.setGiaBan(chiTietSP.getGiaBan());
+        chiTietSPViewModel.setDonGia(chiTietSP.getDonGia());
+        chiTietSP.setSoLuong(chiTietSP.getSoLuong());
+        chiTietSPViewModel.setSanPham(chiTietSP.getSanPham().getId());
+        chiTietSPViewModel.setChatLieu(chiTietSP.getChatLieu().getId());
+        chiTietSPViewModel.setMauSac(chiTietSP.getMauSac().getId());
+        chiTietSPViewModel.setKichThuoc(chiTietSP.getKichThuoc().getId());
+        chiTietSPViewModel.setNhaCungCap(chiTietSP.getNhaCungCap().getId());
+        chiTietSPViewModel.setHang(chiTietSP.getHang().getId());
+        model.addAttribute("ct", chiTietSPViewModel);
+        model.addAttribute("id", chiTietSP.getId());
         return "admin/crud/chitietsanpham/ctsp-update";
     }
 }

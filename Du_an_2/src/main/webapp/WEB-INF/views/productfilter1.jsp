@@ -96,8 +96,8 @@
 										phẩm</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/sneaker/product">Quản lý</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Thống
-										kê</a></li>
+								<li class="nav-item"><a class="nav-link" href="/sneaker/hoa-don">Bán hàng
+								</a></li>
 							</ul>
 						</div>
 					</nav>
@@ -302,7 +302,7 @@
 							<li><a href="indext.jsp"> Home </a></li>
 							<li><a href="about.jsp"> About </a></li>
 							<li><a href="product.jsp"> Products </a></li>
-							<li><a href="why.jsp"> Why Us </a></li>
+							<li><a href="qlhoadon.jsp"> Why Us </a></li>
 							<li><a href="testimonial.jsp"> Testimonial </a></li>
 						</ul>
 					</div>

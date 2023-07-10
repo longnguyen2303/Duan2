@@ -45,7 +45,7 @@
                     <a type="button" href="/ctsp/delete/${ct.id}"
                        class="btn btn-danger">Hủy</a>
                     <a type="button"
-                       href="/ctsp/form-update"
+                       href="/ctsp/form-update/${ct.id}"
                        class="btn btn-success">Cập nhật</a>
                 </td>
 

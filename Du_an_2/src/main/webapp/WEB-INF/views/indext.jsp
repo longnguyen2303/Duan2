@@ -96,8 +96,8 @@
 									href="/sneaker/productfilter">Sản phẩm</a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="/sneaker/product">Quản lý</a></li>
-								<li class="nav-item"><a class="nav-link" href="#">Thống
-										kê</a></li>
+								<li class="nav-item"><a class="nav-link" href="/sneaker/hoa-don">Bán hàng
+										</a></li>
 							</ul>
 						</div>
 					</nav>
