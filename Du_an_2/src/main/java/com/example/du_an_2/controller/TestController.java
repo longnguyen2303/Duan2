@@ -3,6 +3,8 @@ package com.example.du_an_2.controller;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.du_an_2.entities.HoaDon;
+import com.example.du_an_2.repositories.HoaDonRepository;
 import com.example.du_an_2.repositories.MauSacRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,6 +34,9 @@ public class TestController {
 
 	@Autowired
 	private MauSacRepository mauSacRepository;
+
+	@Autowired
+	private HoaDonRepository hoaDonRepository;
 
 	@GetMapping("trang-chu")
 	public String trangChu(Model model) {
@@ -86,5 +91,13 @@ public class TestController {
 		model.addAttribute("listSpbyHang", listbyHang);
 
 		return "productfilter1";
+	}
+
+	@GetMapping("hoa-don")
+	public String hoaDon(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
+		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.DESC, "lastModifiedDate"));
+		Page<HoaDon> page = hoaDonRepository.findAll(pageable);
+		model.addAttribute("listHD", page);
+		return "qlhoadon";
 	}
 }

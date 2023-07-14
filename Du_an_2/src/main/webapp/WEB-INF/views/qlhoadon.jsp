@@ -228,7 +228,7 @@
 <%--      </form>--%>
 <%--    </div>--%>
     <div>
-      <form style="margin-left: 90%" action="hoa-don/tao-hoa-don" method="post">
+      <form style="margin-left: 90%" action="/sneaker/hoa-don/tao-hoa-don" method="post">
         <button class="btn btn-primary">Tạo hóa đơn</button>
       </form><br>
     </div>
@@ -253,11 +253,11 @@
           <td>${hd.thanhTien}</td>
           <td>${hd.trangThai == 0 ? 'Chưa thanh toán' : hd.trangThai == 1 ? 'Đã thanh toán' : 'Hủy'}</td>
           <td>
-            <a type="button" href="/ctsp/delete/${ct.id}"
-               class="btn btn-danger">Hủy</a>
+            <a type="button" href="sneaker/hoa-don/delete/${hd.id}"
+               class="btn btn-danger"><i class="fa fa-trash"></i></a>
             <a type="button"
-               href="/ctsp/form-update/${ct.id}"
-               class="btn btn-primary">Cập nhật</a>
+               href="/sneaker/edit_hoadon/${hd.id}"
+               class="btn btn-primary"><i class="fa fa-pencil"></i></a>
           </td>
             <%--                    <td>--%>
             <%--                        <a type="button"--%>
@@ -268,6 +268,23 @@
       </c:forEach>
       </tbody>
     </table>
+<%--      <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">--%>
+<%--        <div  class="modal-dialog modal-lg">--%>
+<%--          <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--              <h4 class="modal-title" id="myModalLabel">Bạn vừa tạo một hóa đơn mới, đi đến hóa đơn vừa tạo ?</h4>--%>
+<%--              <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                <span aria-hidden="true">&times;</span>--%>
+<%--              </button>--%>
+<%--            </div>--%>
+<%--            <div class="modal-footer">--%>
+<%--              <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->--%>
+<%--              <button type="button" class="btn btn-primary" data-dismiss="modal">Đồng ý</button>--%>
+<%--              <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--      </div>--%>
     </div>
     <br>
   </main>
