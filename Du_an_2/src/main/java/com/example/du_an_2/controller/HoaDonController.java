@@ -21,11 +21,11 @@ import java.util.UUID;
 @RequestMapping("sneaker")
 public class HoaDonController {
 
-	@Autowired
-	private HoaDonRepository hoaDonRepository;
+    @Autowired
+    private HoaDonRepository hoaDonRepository;
 
-	@Autowired
-	private CTSPRepository ctspRepository;
+    @Autowired
+    private CTSPRepository ctspRepository;
 
 //    @GetMapping("hoa-don")
 //    public String hoaDon(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
@@ -35,36 +35,42 @@ public class HoaDonController {
 //        return "qlhoadon";
 //    }
 
-	/*
-	 * @PostMapping("hoa-don/tao-hoa-don") public String taoHoaDon(Model model) {
-	 * HoaDon hoaDon = new HoaDon(); LocalDateTime time = LocalDateTime.now();
-	 * String maHd = "HD" + String.valueOf(time.getYear()).substring(2) +
-	 * time.getMonthValue() + time.getDayOfMonth() + time.getHour() +
-	 * time.getMinute() + time.getSecond(); hoaDon.setMa(maHd);
-	 * hoaDon.setNgayTao(new Date()); hoaDon.setHinhThucGiaoHang(0);
-	 * this.hoaDonRepository.save(hoaDon); return "redirect:/sneaker/hoa-don"; }
-	 */
-	@GetMapping("hoa-don/tao-hoa-don")
-	public String thd(Model model) {
-		HoaDon hoaDon = new HoaDon();
-		LocalDateTime time = LocalDateTime.now();
-		String maHd = "HD" + String.valueOf(time.getYear()).substring(2) + time.getMonthValue() + time.getDayOfMonth()
-				+ time.getHour() + time.getMinute() + time.getSecond();
-		hoaDon.setMa(UUID.randomUUID().toString());
-		hoaDon.setNgayTao(new Date());
-		hoaDon.setHinhThucGiaoHang(0);
-		this.hoaDonRepository.save(hoaDon);
 
-		HoaDon hd = hoaDonRepository.findbymaxid(hoaDon.getId());
-		model.addAttribute("hdd", hd);
-		model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.DESC, "lastModifiedDate")));
-		return "udhoadon";
-	}
+    @PostMapping("hoa-don/tao-hoa-don")
+    public String taoHoaDon(Model model) {
+        HoaDon hoaDon = new HoaDon();
+        LocalDateTime time = LocalDateTime.now();
+        String maHd = "HD" + String.valueOf(time.getYear()).substring(2) +
+                time.getMonthValue() + time.getDayOfMonth() + time.getHour() +
+                time.getMinute() + time.getSecond();
+        hoaDon.setMa(maHd);
+        hoaDon.setNgayTao(new Date());
+        hoaDon.setHinhThucGiaoHang(0);
+        this.hoaDonRepository.save(hoaDon);
+        return "redirect:/sneaker/hoa-don";
+    }
 
-	@GetMapping("edit_hoadon/{id}")
-	public String editHoaDon(Model model, @PathVariable("id") HoaDon hoaDon) {
-		model.addAttribute("hoaDon", hoaDon);
-		model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.DESC, "lastModifiedDate")));
-		return "udhoadon";
-	}
+//	@GetMapping("hoa-don/tao-hoa-don")
+//	public String thd(Model model) {
+//		HoaDon hoaDon = new HoaDon();
+//		LocalDateTime time = LocalDateTime.now();
+//		String maHd = "HD" + String.valueOf(time.getYear()).substring(2) + time.getMonthValue() + time.getDayOfMonth()
+//				+ time.getHour() + time.getMinute() + time.getSecond();
+//		hoaDon.setMa(UUID.randomUUID().toString());
+//		hoaDon.setNgayTao(new Date());
+//		hoaDon.setHinhThucGiaoHang(0);
+//		this.hoaDonRepository.save(hoaDon);
+//
+//		HoaDon hd = hoaDonRepository.findbymaxid(hoaDon.getId());
+//		model.addAttribute("hdd", hd);
+//		model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.DESC, "lastModifiedDate")));
+//		return "udhoadon";
+//	}
+
+    @GetMapping("edit_hoadon/{id}")
+    public String editHoaDon(Model model, @PathVariable("id") HoaDon hoaDon) {
+        model.addAttribute("hoaDon", hoaDon);
+        model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.DESC, "lastModifiedDate")));
+        return "udhoadon";
+    }
 }

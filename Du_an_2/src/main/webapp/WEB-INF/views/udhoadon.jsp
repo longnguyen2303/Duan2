@@ -188,7 +188,6 @@
 
 <section style="margin-top: 100px">
     <div>
-        <p>${hdd.ma}</p>
         <h3>Danh sách sản phẩm</h3>
         <div>
             <a style="margin-left: 89%; margin-bottom: 20px" href="#"
@@ -259,20 +258,23 @@
             </div>
         </div>
 
-<%--        Thanh toán--%>
+    </div>
+</section>
+
+<!-- end product section -->
+<section style="height: 380px;margin-top: 10px">
+    <div>
+        <%--        Thanh toán--%>
         <div style="float: right" class="card col-lg-4">
             <p style="font-weight: bold;font-size: large;padding-top: 10px">Thông Tin Thanh Toán</p>
             <hr>
             <label>Tiền hàng: </label><label>1.000.000VNĐ</label><br>
             <label>Giảm giá: </label><label>1.000.000VNĐ</label><br>
             <label>Tổng tiền: </label><label>1.000.000VNĐ</label><br>
-            <button class="btn btn-success">Đặt hàng</button>
+            <button class="btn btn-success">Đặt hàng</button><br>
         </div>
     </div>
 </section>
-
-<!-- end product section -->
-
 
 <!-- info section -->
 <section class="info_section " style="margin-top: 100px">
