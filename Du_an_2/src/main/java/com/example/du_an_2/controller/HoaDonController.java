@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("sneaker")
@@ -49,7 +50,7 @@ public class HoaDonController {
 		LocalDateTime time = LocalDateTime.now();
 		String maHd = "HD" + String.valueOf(time.getYear()).substring(2) + time.getMonthValue() + time.getDayOfMonth()
 				+ time.getHour() + time.getMinute() + time.getSecond();
-		hoaDon.setMa(maHd);
+		hoaDon.setMa(UUID.randomUUID().toString());
 		hoaDon.setNgayTao(new Date());
 		hoaDon.setHinhThucGiaoHang(0);
 		this.hoaDonRepository.save(hoaDon);
