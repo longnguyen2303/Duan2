@@ -2,7 +2,9 @@ package com.example.du_an_2.controller;
 
 import com.example.du_an_2.entities.ChiTietSP;
 import com.example.du_an_2.entities.HoaDon;
+import com.example.du_an_2.entities.HoaDonChiTiet;
 import com.example.du_an_2.repositories.CTSPRepository;
+import com.example.du_an_2.repositories.HoaDonChiTietRepository;
 import com.example.du_an_2.repositories.HoaDonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,6 +29,9 @@ public class HoaDonController {
     @Autowired
     private CTSPRepository ctspRepository;
 
+    @Autowired
+    private HoaDonChiTietRepository hoaDonChiTietRepository;
+
 //    @GetMapping("hoa-don")
 //    public String hoaDon(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
 //        Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.DESC, "lastModifiedDate"));
@@ -47,7 +52,8 @@ public class HoaDonController {
         hoaDon.setNgayTao(new Date());
         hoaDon.setHinhThucGiaoHang(0);
         this.hoaDonRepository.save(hoaDon);
-        return "redirect:/sneaker/hoa-don";
+        model.addAttribute("listHDCT", hoaDonChiTietRepository.getListByHoaDon(hoaDon.getId()));
+        return "redirect:/sneaker/edit_hoadon/" + hoaDon.getId();
     }
 
 //	@GetMapping("hoa-don/tao-hoa-don")
@@ -70,7 +76,21 @@ public class HoaDonController {
     @GetMapping("edit_hoadon/{id}")
     public String editHoaDon(Model model, @PathVariable("id") HoaDon hoaDon) {
         model.addAttribute("hoaDon", hoaDon);
+        model.addAttribute("idHD", hoaDon.getId());
         model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.DESC, "lastModifiedDate")));
+        model.addAttribute("listHDCT", hoaDonChiTietRepository.getListByHoaDon(hoaDon.getId()));
         return "udhoadon";
+    }
+
+    @PostMapping("edit_hoadon/{idHD}/add/{id}")
+    public String addSPtoHoaDon(Model model, @PathVariable("idHD") HoaDon hoaDon, @PathVariable("id") ChiTietSP chiTietSP){
+        HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+        hoaDonChiTiet.setHoaDon(hoaDon);
+        hoaDonChiTiet.setChiTietSP(chiTietSP);
+        hoaDonChiTiet.setDonGia(chiTietSP.getDonGia());
+        hoaDonChiTiet.setSoLuong(1);
+        hoaDonChiTietRepository.save(hoaDonChiTiet);
+        model.addAttribute("listHDCT", hoaDonChiTietRepository.getListByHoaDon(hoaDon.getId()));
+        return "redirect:/sneaker/edit_hoadon/" + hoaDon.getId();
     }
 }

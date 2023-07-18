@@ -204,6 +204,22 @@
                 <th>Màu</th>
                 <th colspan="1">Hành động</th>
                 </thead>
+                <tbody>
+                <c:forEach items="${listHDCT}" var="hdct">
+                    <tr>
+                        <td><img src="../../images/${hdct.chiTietSP.hinhAnh}" height="80px"
+                                 width="120px"></td>
+                        <td>${hdct.chiTietSP.sanPham.ten}</td>
+                        <td>${hdct.soLuong}</td>
+                        <td>${hdct.chiTietSP.kichThuoc.ten}</td>
+                        <td>${hdct.chiTietSP.mauSac.ten}</td>
+                        <td><a type="button" href="#"
+                               class="btn btn-danger"><i class="fa fa-trash"></i></a> <a
+                                type="button" href="#"
+                                class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
             </table>
         </div>
 
@@ -242,7 +258,9 @@
                                     </td>
                                     <td>${ct.soLuong}</td>
                                     <td>
+                                        <form action="/sneaker/edit_hoadon/${idHD}/add/${ct.id}" method="post">
                                         <button class="btn btn-primary">Chọn</button>
+                                        </form>
                                     </td>
                                 </tr>
                             </c:forEach>

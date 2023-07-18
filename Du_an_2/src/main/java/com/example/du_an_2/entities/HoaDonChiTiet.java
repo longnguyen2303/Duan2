@@ -32,7 +32,7 @@ public class HoaDonChiTiet extends AuditEntity {
     @JoinColumn(name = "id_ctsp")
     private ChiTietSP chiTietSP;
 
-    @Column(name = "so_luong")
+    @Column(name = "soluong")
     private int soLuong;
 
     @Column(name = "don_gia")
