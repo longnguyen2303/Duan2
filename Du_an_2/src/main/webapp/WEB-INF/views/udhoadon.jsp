@@ -258,11 +258,53 @@
                                     </td>
                                     <td>${ct.soLuong}</td>
                                     <td>
-                                        <form action="/sneaker/edit_hoadon/${idHD}/add/${ct.id}" method="post">
-                                        <button class="btn btn-primary">Chọn</button>
-                                        </form>
+                                        <a href="#"
+                                           class="btn btn-primary" data-toggle="modal"
+                                           data-target="#sanPhamCT${ct.id}">Chọn</a>
+
+                                        <div class="modal fade" id="sanPhamCT${ct.id}" tabindex="-1" role="dialog"
+                                             aria-labelledby="basicModal" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="card modal-body">
+                                                        <div class="d-flex col-lg-12">
+                                                            <div class="card col-lg-6">
+                                                                <img style="margin-top: 50px" class="card-img-top"
+                                                                     src="../../images/${ct.hinhAnh}"/>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <h1>${ct.sanPham.ten}</h1>
+                                                                <br/>
+                                                                <p>Hãng: ${ct.hang.ten }</p>
+
+                                                                <p>Chất liệu: ${ct.chatLieu.ten }</p>
+                                                                <div>
+                        <span style="font-weight: bold">Giá bán: <fmt:formatNumber type="currency"
+                                                                                 value="${ct.giaBan}"
+                                                                                 pattern="#,###"/></span>
+                                                                    <span>VNĐ</span>
+                                                                </div>
+                                                                <p>Kho còn: ${ct.soLuong }</p>
+                                                                <form action="/sneaker/edit_hoadon/${idHD}/add/${ct.id}" method="post">
+                                                                    <p><input type="number" name="soluongMua" class="form-control" placeholder="Nhập số lượng"></p>
+                                                                    <button style="width: 100%" class="btn btn-primary">Xác nhận</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
+
+
                             </c:forEach>
                             </tbody>
                         </table>
@@ -276,6 +318,7 @@
             </div>
         </div>
 
+
     </div>
 </section>
 
@@ -287,9 +330,10 @@
             <p style="font-weight: bold;font-size: large;padding-top: 10px">Thông Tin Thanh Toán</p>
             <hr>
             <label>Tiền hàng: </label><label>1.000.000VNĐ</label><br>
-            <label>Giảm giá: </label><label>1.000.000VNĐ</label><br>
+            <label>Giảm giá: </label><label>0VNĐ</label><br>
             <label>Tổng tiền: </label><label>1.000.000VNĐ</label><br>
-            <button class="btn btn-success">Đặt hàng</button><br>
+            <button class="btn btn-success">Đặt hàng</button>
+            <br>
         </div>
     </div>
 </section>
@@ -356,7 +400,6 @@
 </section>
 
 <!-- end info_section -->
-
 
 <!-- footer section -->
 <footer class="footer_section">

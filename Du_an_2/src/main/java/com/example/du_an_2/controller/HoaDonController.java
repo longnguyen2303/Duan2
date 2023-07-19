@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
@@ -83,13 +84,15 @@ public class HoaDonController {
     }
 
     @PostMapping("edit_hoadon/{idHD}/add/{id}")
-    public String addSPtoHoaDon(Model model, @PathVariable("idHD") HoaDon hoaDon, @PathVariable("id") ChiTietSP chiTietSP){
+    public String addSPtoHoaDon(Model model, @PathVariable("idHD") HoaDon hoaDon, @PathVariable("id") ChiTietSP chiTietSP, @RequestParam("soluongMua") String soLuong){
         HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
         hoaDonChiTiet.setHoaDon(hoaDon);
         hoaDonChiTiet.setChiTietSP(chiTietSP);
         hoaDonChiTiet.setDonGia(chiTietSP.getDonGia());
-        hoaDonChiTiet.setSoLuong(1);
+        hoaDonChiTiet.setSoLuong(Integer.valueOf(soLuong));
         hoaDonChiTietRepository.save(hoaDonChiTiet);
+//        hoaDon.setThanhTien(hoaDonChiTiet.getDonGia().multiply(BigDecimal.valueOf(hoaDonChiTiet.getSoLuong())));
+//        model.addAttribute("hoaDon", hoaDon);
         model.addAttribute("listHDCT", hoaDonChiTietRepository.getListByHoaDon(hoaDon.getId()));
         return "redirect:/sneaker/edit_hoadon/" + hoaDon.getId();
     }
