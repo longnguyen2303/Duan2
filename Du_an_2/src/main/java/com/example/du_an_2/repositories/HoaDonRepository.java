@@ -12,6 +12,6 @@ import java.util.UUID;
 @Repository
 public interface HoaDonRepository extends JpaRepository<HoaDon, UUID> {
 
-	@Query(value = " SELECT top 1  *\r\n" + "  FROM hoa_don order by  id desc", nativeQuery = true)
-	HoaDon findbymaxid(UUID id);
+	@Query("select sum(a.donGia*a.soLuong) from HoaDonChiTiet a left join HoaDon b on a.hoaDon.id = b.id where b.ma = ?1")
+	Integer tongTienSanPham(String maHoaDon);
 }

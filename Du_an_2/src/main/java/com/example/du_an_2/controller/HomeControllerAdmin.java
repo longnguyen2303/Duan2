@@ -183,6 +183,11 @@ public class HomeControllerAdmin {
 	public String editHoaDon(Model model, @PathVariable("id") HoaDon hoaDon) {
 		model.addAttribute("hoaDon", hoaDon);
 		model.addAttribute("idHD", hoaDon.getId());
+		if(hoaDonRepository.tongTienSanPham(hoaDon.getMa()) == null){
+			model.addAttribute("tongTien", 0);
+		}else{
+			model.addAttribute("tongTien", hoaDonRepository.tongTienSanPham(hoaDon.getMa()));
+		}
 		model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.DESC, "lastModifiedDate")));
 		model.addAttribute("listHDCT", hoaDonChiTietRepository.getListByHoaDon(hoaDon.getId()));
 		return "admin/edithoadonquay";
@@ -194,11 +199,16 @@ public class HomeControllerAdmin {
 		HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
 		hoaDonChiTiet.setHoaDon(hoaDon);
 		hoaDonChiTiet.setChiTietSP(chiTietSP);
-		hoaDonChiTiet.setDonGia(chiTietSP.getDonGia());
+		hoaDonChiTiet.setDonGia(chiTietSP.getGiaBan());
 		hoaDonChiTiet.setSoLuong(Integer.valueOf(soLuong));
 		hoaDonChiTietRepository.save(hoaDonChiTiet);
 //        hoaDon.setThanhTien(hoaDonChiTiet.getDonGia().multiply(BigDecimal.valueOf(hoaDonChiTiet.getSoLuong())));
 //        model.addAttribute("hoaDon", hoaDon);
+		if(hoaDonRepository.tongTienSanPham(hoaDon.getMa()) == null){
+			model.addAttribute("tongTien", 0);
+		}else{
+			model.addAttribute("tongTien", hoaDonRepository.tongTienSanPham(hoaDon.getMa()));
+		}
 		model.addAttribute("listHDCT", hoaDonChiTietRepository.getListByHoaDon(hoaDon.getId()));
 		return "redirect:/admin/dashboard/edit_hoadon/" + hoaDon.getId();
 	}

@@ -201,7 +201,7 @@
 							<div class="img-box">
 								<img src="../../images/${sp.hinhAnh}" alt=""> <a
 									href="/sneaker/detail/${sp.id}" class="add_cart_btn"> <span>
-										Detail </span>
+										Chi tiết </span>
 								</a>
 								<%--              <a href="" class="add_cart_btn">--%>
 								<%--                <span>--%>
