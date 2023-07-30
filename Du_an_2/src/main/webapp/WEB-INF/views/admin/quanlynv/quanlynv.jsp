@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-         pageEncoding="utf-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../../../images/background.jpg" type="image/gif"/>
+    <link rel="icon" href="../../../../images/background.jpg" type="image/gif"/>
     <title>Sneaker</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -15,42 +15,42 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet"
-          href="../../../plugins/fontawesome-free/css/all.min.css">
+          href="../../../../plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet"
           href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet"
-          href="../../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+          href="../../plugins/tempusdominus-bootstrap-4views/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet"
-          href="../../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+          href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="../../../plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="../../plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet"
-          href="../../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+          href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Daterange picker -->
     <link rel="stylesheet"
-          href="../../../plugins/daterangepicker/daterangepicker.css">
+          href="../../plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet"
-          href="../../../plugins/summernote/summernote-bs4.min.css">
+          href="../../plugins/summernote/summernote-bs4.min.css">
 
     <!-- font awesome style -->
-    <link href="../../../css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="../../../../css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
-    <!-- <div
-            class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="dist/img/AdminLTELogo.png"
-             alt="AdminLTELogo" height="60" width="60">
-    </div> -->
+    <!--  <div
+             class="preloader flex-column justify-content-center align-items-center">
+         <img class="animation__shake" src="../../../images/background.jpg"
+              alt="AdminLTELogo" height="60" width="60">
+     </div> -->
 
     <!-- Navbar -->
     <nav
@@ -230,8 +230,8 @@
                     data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-                    <li class="nav-item "><a href="/admin/dashboard"
-                                             class="nav-link "> <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <li class="nav-item "><a href="/admin/dashboard" class="nav-link "> <i
+                            class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Home <i class="right fas fa-angle-left"></i>
                         </p>
@@ -263,90 +263,123 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-
-        <!-- /.content-header -->
 
         <!-- Main content -->
         <section class="content">
-            <div style="float: right; margin-bottom: 20px">
-                <form action="/admin/dashboard/quanlysp/search" method="get"
-                      class="search_form">
-                    <input type="text" name="inputsearch" value="${inputsearch}"
-                           class="form-control" placeholder="Tìm kiếm sản phẩm...">
-                    <button style="background-color: #006cfa" type="submit">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </form>
-            </div>
-            <table class="table table-hover">
-                <thead>
-                <th>STT</th>
-                <th>Image</th>
-                <th>Tên Sản Phẩm</th>
-                <th>Hãng</th>
-                <th>Kích thước</th>
-                <th>Chất liệu</th>
-                <th>Số lượng</th>
-                <th>Giá bán</th>
-                <th colspan="1">Action</th>
-                </thead>
-                <tbody>
-                <c:forEach items="${listCTSP.content}" var="ct" varStatus="stt">
-                    <tr>
-                        <td>${stt.index + 1}</td>
-                        <td><img src="/../images/${ct.hinhAnh}" height="100px"
-                                 width="150px"></td>
-                        <td><p>${ct.sanPham.ten}${ct.mauSac.ten}</p></td>
-                        <td>${ct.hang.ten}</td>
-                        <td>${ct.kichThuoc.ten}</td>
-                        <td>${ct.chatLieu.ten}</td>
-                        <td>${ct.soLuong}</td>
-                        <td><fmt:formatNumber type="currency" value="${ct.giaBan}"
-                                              pattern="#,###"/>VNĐ
-                        </td>
-                        <td><a type="button" href="/ctsp/delete/${ct.id}"
-                               class="btn btn-danger">Hủy</a> <a type="button"
-                                                                 href="/ctsp/form-update/${ct.id}"
-                                                                 class="btn btn-primary">Cập
-                            nhật</a></td>
-                            <%--                    <td>--%>
-                            <%--                        <a type="button"--%>
-                            <%--                           href="/ctsp/form-update"--%>
-                            <%--                           class="btn btn-success">Cập nhật</a>--%>
-                            <%--                    </td>--%>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-            <br>
-            <div style="float: right">
-                <a type="button" class="btn btn-success"
-                   href="/admin/dashboard/form-add">Thêm sản phẩm</a>
-            </div>
-
             <div>
-                <c:if test="${listCTSP.totalPages - 1 >= 0}">
-                    <nav style="font-weight: bold;"
-                         aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <c:if test="${inputsearch != null || inputsearch != ''}">
-                                <c:forEach begin="0" end="${ listCTSP.totalPages -1}"
-                                           varStatus="loop">
-                                    <li class="page-item"><a style="color: red"
-                                                             class="page-link"
-                                                             href="/admin/dashboard/quanlysp/search?inputsearch=${inputsearch}&page=${loop.begin + loop.count - 1}">
-                                            ${loop.begin + loop.count } </a></li>
-                                </c:forEach>
-                            </c:if>
-                        </ul>
-                    </nav>
-                </c:if>
+                <h3 align="center">Danh Sách Nhân Viên</h3>
+                <table class="table">
+                    <thead>
+                    <th>Mã NV</th>
+                    <th>Họ tên</th>
+                    <th>Giới tính</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>SĐT</th>
+                    <th>Hành động</th>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${listNV}" var="nv">
+                        <tr>
+                            <td>${nv.ma}</td>
+                            <td>${nv.hoTen}</td>
+                            <td>${nv.gioiTinh == 0 ? 'Nam' : 'Nữ'}</td>
+                            <td>${nv.email}</td>
+                            <td>${nv.diaChi}</td>
+                            <td>${nv.sdt}</td>
+                            <td>
+                                <a type="button" class="btn btn-success">Thêm tài khoản</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <hr>
+            <div>
+                <a style="margin-bottom: 20px" href="#"
+                   class="btn btn-primary" data-toggle="modal"
+                   data-target="#largeModal">Thêm nhân viên</a>
+            </div>
+            <div class="modal fade" id="largeModal" tabindex="-1" role="dialog"
+                 aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Thông tin nhân viên</h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div style="margin: 10px; overflow: auto;"
+                             class="card modal-body">
+                            <form:form action="/admin/dashboard/add-nv" modelAttribute="nv" method="post">
+                                <div>
+                                    <label class="form-label">Mã</label>
+                                    <form:input path="ma" class="form-control "/>
+                                    <form:errors path="ma" cssStyle="color: red;font-weight: bold"/>
+                                </div>
+                                <div>
+                                    <label class="form-label">Họ tên</label>
+                                    <form:input path="hoTen" class="form-control "/>
+                                    <form:errors path="hoTen" cssStyle="color: red;font-weight: bold"/>
+                                </div>
+                                <div>
+                                    <label class="form-label">Email</label>
+                                    <form:input path="email" class="form-control "/>
+                                    <form:errors path="email" cssStyle="color: red;font-weight: bold"/>
+                                </div>
+                                <div>
+                                    <label class="form-label">Số điện thoại</label>
+                                    <form:input path="sdt" class="form-control "/>
+                                    <form:errors path="sdt" cssStyle="color: red;font-weight: bold"/>
+                                </div>
+                                <div>
+                                    <label class="form-label">Giới Tính</label><br>
+                                    <form:radiobutton path="gioiTinh" value="0" label="Nam" check="true"/>
+                                    <form:radiobutton path="gioiTinh" value="1" label="Nữ"/>
+                                </div>
+                                <%--                                <div>--%>
+                                <%--                                    <label class="form-label">Ngày sinh</label>--%>
+                                <%--                                    <form:input type="date" path="ngaySinh" class="form-control" />--%>
+                                <%--                                    <form:errors path="ngaySinh" cssStyle="color: red;font-weight: bold"/>--%>
+                                <%--                                </div>--%>
+                                <div>
+                                    <label class="form-label">Địa Chỉ</label>
+                                    <form:input path="diaChi" class="form-control "/>
+                                    <form:errors path="diaChi" cssStyle="color: red;font-weight: bold"/>
+                                </div>
+
+                                <br>
+                                <div>
+                                    <button class="btn btn-success">Add</button>
+                                </div>
+                            </form:form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                            <button type="button" class="btn btn-danger"
+                                    data-dismiss="modal">Đóng
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+    <%--    <footer class="main-footer">--%>
+    <%--        <strong>Copyright &copy; 2014-2021 <a--%>
+    <%--                href="https://adminlte.io">AdminLTE.io</a>.--%>
+    <%--        </strong> All rights reserved.--%>
+    <%--        <div class="float-right d-none d-sm-inline-block">--%>
+    <%--            <b>Version</b> 3.2.0--%>
+    <%--        </div>--%>
+    <%--    </footer>--%>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -357,40 +390,57 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/../plugins/jquery/jquery.min.js"></script>
+<script src="../../../../js/jquery-3.4.1.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="/../plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../../../js/ion.rangeSlider.min.js"></script>
+<script>
+    // $('#largeModal').on('shown.bs.modal', function (e) {
+    //     $(this).find('form').submit(function(e) {
+    //         e.preventDefault();
+    //         // Gửi biểu mẫu bằng Ajax
+    //         $.ajax({
+    //             type: "POST",
+    //             url: "admin/dashboard/add-nv",
+    //             data: $(this).serialize(),
+    //             success: function(data) {
+    //                 // Xử lý dữ liệu trả về
+    //                 $('#myModal').modal('show');
+    //             }
+    //         });
+    //     });
+    // });
+</script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="/../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
-<script src="/../plugins/chart.js/Chart.min.js"></script>
+<script src="../../plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
-<script src="/../plugins/sparklines/sparkline.js"></script>
+<script src="../../plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
-<script src="/../plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="/../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<script src="../../plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
-<script src="/../plugins/jquery-knob/jquery.knob.min.js"></script>
+<script src="../../plugins/jquery-knob/jquery.knob.min.js"></script>
 <!-- daterangepicker -->
-<script src="/../plugins/moment/moment.min.js"></script>
-<script src="/../plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../../plugins/moment/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script
-        src="/../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+        src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="/../plugins/summernote/summernote-bs4.min.js"></script>
+<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
 <script
-        src="/../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+        src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/../dist/js/adminlte.js"></script>
+<script src="../../dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="/../dist/js/demo.js"></script>
+<script src="../../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/../dist/js/pages/dashboard.js"></script>
+<script src="../../dist/js/pages/dashboard.js"></script>
 </body>
 </html>

@@ -246,6 +246,12 @@
                             Quản lý sản phẩm <i class="right fas fa-angle-left"></i>
                         </p>
                     </a></li>
+                    <li class="nav-item "><a href="/admin/dashboard/quan-ly-nhan-vien"
+                                             class="nav-link "> <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Quản lý nhân viên <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a></li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

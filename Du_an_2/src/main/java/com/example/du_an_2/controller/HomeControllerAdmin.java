@@ -190,6 +190,7 @@ public class HomeControllerAdmin {
 		}
 		model.addAttribute("listCTSP", ctspRepository.findAll(Sort.by(Sort.Direction.DESC, "lastModifiedDate")));
 		model.addAttribute("listHDCT", hoaDonChiTietRepository.getListByHoaDon(hoaDon.getId()));
+		model.addAttribute("listHDTreo", hoaDonRepository.getListHDTreo());
 		return "admin/edithoadonquay";
 	}
 

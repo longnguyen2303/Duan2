@@ -40,6 +40,9 @@
     <!-- summernote -->
     <link rel="stylesheet"
           href="/../plugins/summernote/summernote-bs4.min.css">
+
+    <!-- font awesome style -->
+    <link href="../../../css/font-awesome.min.css" rel="stylesheet"/>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -58,10 +61,13 @@
         <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" data-widget="pushmenu"
                                     href="#" role="button"><i class="fas fa-bars"></i></a></li>
-            <li class="nav-item d-none d-sm-inline-block"><a
-                    href="dashboard" class="nav-link">Home</a></li>
-            <li class="nav-item d-none d-sm-inline-block"><a href="#"
-                                                             class="nav-link">Contact</a></li>
+            <div>
+                <form
+                        action="/admin/dashboard/hoa-don/tao-hoa-don" method="post">
+                    <button class="btn btn-primary">Tạo hóa đơn</button>
+                </form>
+                <br>
+            </div>
         </ul>
 
         <!-- Right navbar links -->
@@ -247,6 +253,12 @@
                             Quản lý sản phẩm <i class="right fas fa-angle-left"></i>
                         </p>
                     </a></li>
+                    <li class="nav-item "><a href="/admin/dashboard/quan-ly-nhan-vien"
+                                             class="nav-link "> <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Quản lý nhân viên <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a></li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -262,9 +274,17 @@
 
         <!-- Main content -->
         <section class="content">
+            <ul class="nav nav-tabs">
+                <c:forEach items="${listHDTreo}" var="hdt">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/dashboard/edit_hoadon/${hdt.id}">${hdt.ma}</a>
+                    </li>
+                </c:forEach>
+            </ul>
             <div>
                 <h3>Danh sách sản phẩm</h3>
                 <div>
+                    <p>Hóa đơn ${hoaDon.ma}</p>
                     <a style="margin-left: 89%; margin-bottom: 20px" href="#"
                        class="btn btn-primary" data-toggle="modal"
                        data-target="#largeModal">Thêm sản phẩm</a>
@@ -274,6 +294,7 @@
                         <thead>
                         <th>Ảnh</th>
                         <th>Tên</th>
+                        <th>Đơn giá</th>
                         <th>Số lượng</th>
                         <th>Size</th>
                         <th>Màu</th>
@@ -285,6 +306,8 @@
                                 <td><img src="/../images/${hdct.chiTietSP.hinhAnh}"
                                          height="80px" width="120px"></td>
                                 <td>${hdct.chiTietSP.sanPham.ten}</td>
+                                <td><fmt:formatNumber type="currency"
+                                                      value="${hdct.chiTietSP.giaBan}" pattern="#,###"/>VNĐ</td>
                                 <td>${hdct.soLuong}</td>
                                 <td>${hdct.chiTietSP.kichThuoc.ten}</td>
                                 <td>${hdct.chiTietSP.mauSac.ten}</td>
@@ -410,20 +433,37 @@
         </section>
 
         <!-- end product section -->
-        <section style="height: 380px; margin-top: 10px">
-            <div>
-                <%--        Thanh toán--%>
-                <div style="float: right" class="card col-lg-4">
-                    <p style="font-weight: bold; font-size: large; padding-top: 10px">Thông
-                        Tin Thanh Toán</p>
-                    <hr>
-                    <label>Tiền hàng: </label><label><fmt:formatNumber type="currency" value="${tongTien}" pattern="#,###"/>VNĐ</label><br> <label>Giảm
-                    giá: </label><label>0VNĐ</label><br> <label>Tổng tiền: </label>
-                    <label><fmt:formatNumber type="currency" value="${tongTien}" pattern="#,###"/>VNĐ</label><br>
-                    <button class="btn btn-success">Đặt hàng</button>
-                    <br>
+        <section style="height: 450px; margin-top: 10px">
+            <form>
+                <div class="col-lg-12">
+                    <%--        Thanh toán--%>
+                    <div style="float: right;padding: 10px" class="card col-lg-4">
+                        <p style="font-weight: bold; font-size: large; padding-top: 10px">Thông
+                            Tin Thanh Toán</p>
+                        <hr>
+                        <label>Tiền hàng: </label><label><fmt:formatNumber type="currency" value="${tongTien}"
+                                                                           pattern="#,###"/>VNĐ</label><br> <label>Giảm
+                        giá: </label><label>0VNĐ</label><br> <label>Tổng tiền: </label>
+                        <label><fmt:formatNumber type="currency" value="${tongTien}" pattern="#,###"/>VNĐ</label><br>
+                        <button class="btn btn-success">Đặt hàng</button>
+                        <br>
+                    </div>
+
+                    <div style="float: right;" class="col-lg-8">
+                        <div style="padding: 10px;height: 430px" class="card col-lg-12">
+                            <p style="font-weight: bold;font-size: large;padding-top: 10px">Thông Tin Khách Hàng</p>
+                            <hr>
+                            <label style="font-weight: bold">Tên khách hàng</label>
+                            <input class="form-control" placeholder="Nhập tên khách hàng"><br>
+                            <label style="font-weight: bold">Số điện thoại</label>
+                            <input class="form-control" placeholder="Nhập số điện thoại"><br>
+                            <label style="font-weight: bold">Địa chỉ nhận hàng</label>
+                            <input class="form-control" placeholder="Nhập địa chỉ"><br>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
+            </form>
         </section>
 
         <!-- /.content -->
