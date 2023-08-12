@@ -311,10 +311,10 @@
                             <td>${hd.thanhTien}</td>
                             <td>${hd.trangThai == 0 ? 'Chưa thanh toán' : hd.trangThai == 1 ? 'Đã thanh toán' : 'Hủy'}</td>
                             <td><a type="button"
-                                   href="sneaker/hoa-don/delete/${hd.id}" class="btn btn-danger"><i
+                                   href="sneaker/hoa-don/delete/${hd.id}" class="btn btn-danger" data-toggle="tooltip" title="Hủy"><i
                                     class="fa fa-trash"></i></a> <a type="button"
                                                                     href="/admin/dashboard/edit_hoadon/${hd.id}"
-                                                                    class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                                                    class="btn btn-primary" data-toggle="tooltip" title="Cập nhật"><i class="fa fa-pencil"></i></a>
                             </td>
                                 <%--                    <td>--%>
                                 <%--                        <a type="button"--%>
@@ -355,7 +355,7 @@
                                            varStatus="loop">
                                     <li class="page-item"><a style="color: red"
                                                              class="page-link"
-                                                             href="/admin/dashboard/hoadon/search?inputsearch=${inputsearch}&page=${loop.begin + loop.count - 1}">
+                                                             href="/admin/dashboard/banhangquay?page=${loop.begin + loop.count - 1}">
                                             ${loop.begin + loop.count } </a></li>
                                 </c:forEach>
                             </c:if>
@@ -377,12 +377,15 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/../plugins/jquery/jquery.min.js"></script>
+<script src="../../../plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="/../plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 <!-- Bootstrap 4 -->
 <script src="/../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

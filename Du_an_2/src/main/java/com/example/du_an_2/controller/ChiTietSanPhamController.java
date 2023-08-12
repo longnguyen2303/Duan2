@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 @Controller
@@ -131,8 +133,55 @@ public class ChiTietSanPhamController {
         chiTietSPViewModel.setKichThuoc(chiTietSP.getKichThuoc().getId());
         chiTietSPViewModel.setNhaCungCap(chiTietSP.getNhaCungCap().getId());
         chiTietSPViewModel.setHang(chiTietSP.getHang().getId());
+        chiTietSPViewModel.setMoTa(chiTietSP.getMoTa());
         model.addAttribute("ct", chiTietSPViewModel);
         model.addAttribute("id", chiTietSP.getId());
         return "admin/crud/chitietsanpham/ctsp-update";
+    }
+
+    @PostMapping("update/{id}")
+    public String update(@PathVariable("id") ChiTietSP chiTietSP,
+                         @Valid @ModelAttribute("ct") ChiTietSPViewModel chiTietSPViewModel,
+                         BindingResult result,
+                         @RequestParam("mauSac") String idmauSac,
+                         @RequestParam("sanPham") String idsanPham,
+                         @RequestParam("chatLieu") String idchatLieu,
+                         @RequestParam("hang") String idhang,
+                         @RequestParam("kichThuoc") String idkichThuoc,
+                         @RequestParam("nhaCungCap") String idncc,
+                         @RequestParam("anh") MultipartFile linkAnh,
+                         Model model) throws ParseException {
+        if (result.hasErrors()) {
+            model.addAttribute("id", chiTietSP.getId());
+            model.addAttribute("listMauSac", mauSacRepository.findAll());
+            model.addAttribute("listHang", hangRepository.findAll());
+            model.addAttribute("listNCC", nhaCungCapRepository.findAll());
+            model.addAttribute("listSP", sanPhamRepository.findAll());
+            model.addAttribute("listKT", kichThuocRepository.findAll());
+            model.addAttribute("listChatLieu", chatLieuRepository.findAll());
+            return "admin/crud/chitietsanpham/ctsp-update";
+        } else {
+            MauSac mauSac = mauSacRepository.findById(UUID.fromString(idmauSac)).orElse(null);
+            SanPham sanPham = sanPhamRepository.findById(UUID.fromString(idsanPham)).orElse(null);
+            KichThuoc kichThuoc = kichThuocRepository.findById(UUID.fromString(idkichThuoc)).orElse(null);
+            ChatLieu chatLieu = chatLieuRepository.findById(UUID.fromString(idchatLieu)).orElse(null);
+            NhaCungCap nhaCungCap = nhaCungCapRepository.findById(UUID.fromString(idncc)).orElse(null);
+            Hang hang = hangRepository.findById(UUID.fromString(idhang)).orElse(null);
+            chiTietSP.setChatLieu(chatLieu);
+            chiTietSP.setSanPham(sanPham);
+            chiTietSP.setHang(hang);
+            chiTietSP.setKichThuoc(kichThuoc);
+            chiTietSP.setMauSac(mauSac);
+            chiTietSP.setNhaCungCap(nhaCungCap);
+            chiTietSP.setSoLuong(chiTietSPViewModel.getSoLuong());
+            chiTietSP.setDonGia(chiTietSPViewModel.getDonGia());
+            chiTietSP.setGiaBan(chiTietSPViewModel.getGiaBan());
+            chiTietSP.setMoTa(chiTietSPViewModel.getMoTa());
+            if(!linkAnh.isEmpty()){
+                chiTietSP.setHinhAnh(linkAnh.getOriginalFilename());
+            }
+            this.ctspRepository.save(chiTietSP);
+        }
+        return "redirect:/admin/dashboard/quanlysp";
     }
 }

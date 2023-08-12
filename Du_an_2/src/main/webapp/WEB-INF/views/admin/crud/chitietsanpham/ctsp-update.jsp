@@ -1,451 +1,421 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<!-- Basic -->
-	<meta charset="utf-8"/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<!-- Mobile Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-	<!-- Site Metas -->
-	<link rel="icon" href="../../../../../images/background.jpg" type="image/gif"/>
-	<meta name="keywords" content=""/>
-	<meta name="description" content=""/>
-	<meta name="author" content=""/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../../../../images/background.jpg" type="image/gif"/>
+    <title>Sneaker</title>
 
-	<title>Sneaker</title>
-
-
-	<!-- bootstrap core css -->
-	<link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.css"/>
-	<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-			crossorigin="anonymous">
-	<!-- fonts style -->
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- range slider -->
-
-	<!-- font awesome style -->
-	<link href="../../../../../css/font-awesome.min.css" rel="stylesheet"/>
-
-	<!-- Custom styles for this template -->
-	<link href="../../../../../css/style.css" rel="stylesheet"/>
-	<!-- responsive style -->
-	<link href="../../../../../css/responsive.css" rel="stylesheet"/>
-
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="../../../../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet"
+          href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet"
+          href="../../../../../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet"
+          href="../../../../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="../../plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet"
+          href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet"
+          href="../../plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet"
+          href="../../plugins/summernote/summernote-bs4.min.css">
 </head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-<body class="sub_page">
+    <!-- Preloader -->
+    <!--   <div
+              class="preloader flex-column justify-content-center align-items-center">
+          <img class="animation__shake" src="dist/img/AdminLTELogo.png"
+               alt="AdminLTELogo" height="60" width="60">
+      </div> -->
 
-<div class="hero_area">
-	<!-- header section strats -->
-	<header class="header_section">
-		<div class="header_top">
-			<div class="container-fluid">
-				<div class="top_nav_container">
-					<div class="contact_nav">
-						<a href="">
-							<i class="fa fa-phone" aria-hidden="true"></i>
-							<span>
-                  Call : 0363338257
-                </span>
-						</a>
-						<a href="">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-							<span>
-                  Email : sneaker247@gmail.com
-                </span>
-						</a>
-					</div>
-					<from class="search_form">
-						<input type="text" class="form-control" placeholder="Search here...">
-						<button class="" type="submit">
-							<i class="fa fa-search" aria-hidden="true"></i>
-						</button>
-					</from>
-					<div class="user_option_box">
-						<a href="" class="account-link">
-							<i class="fa fa-user" aria-hidden="true"></i>
-							<span>
-                  Tài Khoản
-                </span>
-						</a>
-						<a href="" class="cart-link">
-							<i class="fa fa-shopping-cart" aria-hidden="true"></i>
-							<span>
-                  Giỏ Hàng
-                </span>
-						</a>
-					</div>
-				</div>
+    <!-- Navbar -->
+    <nav
+            class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" data-widget="pushmenu"
+                                    href="#" role="button"><i class="fas fa-bars"></i></a></li>
+            <li class="nav-item d-none d-sm-inline-block"><a
+                    href="dashboard" class="nav-link">Home</a></li>
+            <li class="nav-item d-none d-sm-inline-block"><a href="#"
+                                                             class="nav-link">Contact</a></li>
+        </ul>
 
-			</div>
-		</div>
-		<div class="header_bottom">
-			<div class="container-fluid">
-				<nav class="navbar navbar-expand-lg custom_nav-container ">
-					<a class="navbar-brand" href="/sneaker/trang-chu">
-              <span>
-                Sneaker
-              </span>
-					</a>
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Navbar Search -->
+            <li class="nav-item"><a class="nav-link"
+                                    data-widget="navbar-search" href="#" role="button"> <i
+                    class="fas fa-search"></i>
+            </a>
+                <div class="navbar-search-block">
+                    <form class="form-inline">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" type="search"
+                                   placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-navbar" type="button"
+                                        data-widget="navbar-search">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
 
-					<button class="navbar-toggler" type="button" data-toggle="collapse"
-							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-							aria-expanded="false" aria-label="Toggle navigation">
-						<span class=""> </span>
-					</button>
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item dropdown"><a class="nav-link"
+                                             data-toggle="dropdown" href="#"> <i class="far fa-comments"></i>
+                <span class="badge badge-danger navbar-badge">3</span>
+            </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a href="#" class="dropdown-item"> <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 mr-3 img-circle">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Brad Diesel <span class="float-right text-sm text-danger"><i
+                                        class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">Call me whenever you can...</p>
+                                <p class="text-sm text-muted">
+                                    <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                </p>
+                            </div>
+                        </div> <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item"> <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    John Pierce <span class="float-right text-sm text-muted"><i
+                                        class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">I got your message bro</p>
+                                <p class="text-sm text-muted">
+                                    <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                </p>
+                            </div>
+                        </div> <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item"> <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Nora Silvester <span class="float-right text-sm text-warning"><i
+                                        class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">The subject goes here</p>
+                                <p class="text-sm text-muted">
+                                    <i class="far fa-clock mr-1"></i> 4 Hours Ago
+                                </p>
+                            </div>
+                        </div> <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All
+                        Messages</a>
+                </div>
+            </li>
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown"><a class="nav-link"
+                                             data-toggle="dropdown" href="#"> <i class="far fa-bell"></i> <span
+                    class="badge badge-warning navbar-badge">15</span>
+            </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+						<span class="dropdown-item dropdown-header">15
+							Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item"> <i
+                            class="fas fa-envelope mr-2"></i> 4 new messages <span
+                            class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item"> <i
+                            class="fas fa-users mr-2"></i> 8 friend requests <span
+                            class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item"> <i class="fas fa-file mr-2"></i>
+                        3 new reports <span class="float-right text-muted text-sm">2
+								days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All
+                        Notifications</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link"
+                                    data-widget="fullscreen" href="#" role="button"> <i
+                    class="fas fa-expand-arrows-alt"></i>
+            </a></li>
+            <li class="nav-item"><a class="nav-link"
+                                    data-widget="control-sidebar" data-controlsidebar-slide="true"
+                                    href="#" role="button"> <i class="fas fa-th-large"></i>
+            </a></li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
 
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav ">
-							<li class="nav-item ">
-								<a class="nav-link" href="/sneaker/trang-chu">Trang chủ <span
-										class="sr-only">(current)</span></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#"> Giới thiệu</a>
-							</li>
-							<li class="nav-item active">
-								<a class="nav-link" href="#">Sản phẩm</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/sneaker/product">Quản lý</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Thống kê</a>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</div>
-		</div>
-	</header>
-	<!-- end header section -->
-	<section class="slider_section ">
-		<div id="customCarousel1" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<div class="container ">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="detail-box">
-									<h1>
-										Chào mừng đến với cửa hàng của chúng tôi
-									</h1>
-									<p>
-										Chúng tôi luôn mang đến cho bạn những điều mới mẻ , tinh tế và phong cách nhất.
-									</p>
-									<a href="">
-										Đọc thêm
-									</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="img-box">
-									<img style="height: 350px" src="../../images/slideshow3.jpg" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="container ">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="detail-box">
-									<h1>
-										Chào mừng đến với cửa hàng của chúng tôi
-									</h1>
-									<p>
-										Chúng tôi luôn mang đến cho bạn những điều mới mẻ , tinh tế và phong cách nhất.
-									</p>
-									<a href="">
-										Đọc thêm
-									</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="img-box">
-									<img style="height: 350px" src="../../images/slideshow2.png" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="carousel-item">
-					<div class="container ">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="detail-box">
-									<h1>
-										Chào mừng đến với cửa hàng của chúng tôi
-									</h1>
-									<p>
-										Chúng tôi luôn mang đến cho bạn những điều mới mẻ , tinh tế và phong cách nhất.
-									</p>
-									<a href="">
-										Đọc thêm
-									</a>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="img-box">
-									<img style="height: 350px" src="../../images/slideshow1.jpg" alt="">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="carousel_btn_box">
-				<a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
-					<i class="fa fa-angle-left" aria-hidden="true"></i>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
-					<i class="fa fa-angle-right" aria-hidden="true"></i>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-	</section>
-</div>
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="index3.html" class="brand-link"> <img
+                src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                class="brand-image " style="opacity: .8"> <br>
 
+        </a>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="dist/img/user2-160x160.jpg"
+                        class="img-circle elevation-2" alt="User Image">
+                </div>
 
-<!-- product section -->
+            </div> -->
 
-<section style="margin-top: 100px">
-	<div class="container">
-		<h1 style="font-weight: bold;color: red;margin-left: 350px">Cập nhật sản phẩm</h1>
-		<form:form action="/ctsp/update/${id}" method="post" modelAttribute="ct" enctype="multipart/form-data">
-			<div>
-				<label class="form-label">Sản phẩm</label>
-				<form:select path="sanPham"
-							 class="form-select" aria-label="Default select example">
-					<form:options items="${listSP}" itemLabel="ten" itemValue="id" selected="${sanPham == ct.sanPham ? 'selected' : ''}"/>
-				</form:select>
-			</div>
-			<div>
-				<label class="form-label">Hãng</label>
-				<form:select path="hang"
-							 class="form-select" aria-label="Default select example">
-					<form:options items="${listHang}" itemLabel="ten" itemValue="id" selected="${hang == ct.hang ? 'selected' : ''}"/>
-				</form:select>
-			</div>
-			<div>
-				<label class="form-label">Kích thước</label>
-				<form:select path="kichThuoc"
-							 class="form-select" aria-label="Default select example">
-					<form:options items="${listKT}" itemLabel="ten" itemValue="id" selected="${kichThuoc == ct.kichThuoc ? 'selected' : ''}"/>
-				</form:select>
-			</div>
-			<div>
-				<label class="form-label">Màu sắc</label>
-				<form:select path="mauSac"
-							 class="form-select" aria-label="Default select example">
-					<form:options items="${listMauSac}" itemValue="id" itemLabel="ten" selected="${mauSac == ct.mauSac ? 'selected' : ''}"/>
-				</form:select>
-			</div>
-			<div>
-				<label class="form-label">Nhà Cung Cấp</label>
-				<form:select path="nhaCungCap"
-							 class="form-select" aria-label="Default select example">
-					<form:options items="${listNCC}" itemLabel="ten" itemValue="id" selected="${nhaCungCap == ct.nhaCungCap ? 'selected' : ''}"/>
-				</form:select>
-			</div>
-			<div>
-				<label class="form-label">Chất Liệu</label>
-				<form:select path="chatLieu"
-							 class="form-select" aria-label="Default select example">
-					<form:options items="${listChatLieu}" itemLabel="ten" itemValue="id" selected="${chatLieu == ct.chatLieu ? 'selected' : ''}"/>
-				</form:select>
-			</div>
-			<div>
-				<label class="form-label">Số lượng</label>
-				<form:input type="number" path="soLuong" class="form-control"/>
-				<form:errors path="soLuong" cssStyle="font-weight: bold;color: red"/>
-			</div>
-			<div>
-				<label class="form-label">Đơn giá</label>
-				<form:input type="number" path="donGia" class="form-control"/>
-				<form:errors path="donGia" cssStyle="font-weight: bold;color: red"/>
-			</div>
-			<div>
-				<label class="form-label">Giá bán</label>
-				<form:input type="number" path="giaBan" class="form-control"/>
-				<form:errors path="giaBan" cssStyle="font-weight: bold;color: red"/>
-			</div>
-			<div>
-				<label class="form-label">Mô tả</label>
-				<form:input path="moTa" class="form-control"/>
-				<form:errors path="moTa" cssStyle="font-weight: bold;color: red"/>
-			</div>
-			<br>
-			<div>
-				<input type="file" name="anh" id="file" class="inputfile" />
-				<label for="file">Chọn ảnh</label>
-			</div>
-			<button class="btn btn-success">Cập nhật</button>
-		</form:form>
-	</div>
-	<%-- <div>
-        <c:if test="${listMau.totalPages - 1 >= 0}">
-            <nav style="font-weight: bold;" aria-label="Page navigation example">
-                <ul class="pagination">
-                    <c:forEach begin="0" end="${ listMau.totalPages -1}"
-                        varStatus="loop">
-                        <li class="page-item"><a style="color: red"
-                            class="page-link"
-                            href="/mau-sac/danh-sach?page=${loop.begin + loop.count - 1}">
-                                ${loop.begin + loop.count } </a></li>
-                    </c:forEach>
+            <!-- SidebarSearch Form -->
+            <div class="form-inline">
+                <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search"
+                           placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column"
+                    data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+           with font-awesome or any other icon font library -->
+                    <li class="nav-item "><a href="/admin/dashboard" class="nav-link "> <i
+                            class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Home <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a></li>
+                    <li class="nav-item "><a href="/admin/dashboard/banhangquay"
+                                             class="nav-link "> <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Bán hàng tại quầy <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a></li>
+                    <li class="nav-item "><a href="/admin/dashboard/quanlysp"
+                                             class="nav-link "> <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Quản lý sản phẩm <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a></li>
+                    <li class="nav-item "><a href="/admin/dashboard/quan-ly-nhan-vien"
+                                             class="nav-link "> <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Quản lý nhân viên <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a></li>
                 </ul>
             </nav>
-        </c:if>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v1</li>
+                        </ol>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container">
+                <h1 style="font-weight: bold;color: red;margin-left: 350px">Cập nhật sản phẩm</h1>
+                <form:form action="/ctsp/update/${id}" method="post" modelAttribute="ct" enctype="multipart/form-data">
+                    <div>
+                        <label class="form-label">Sản phẩm</label>
+                        <form:select path="sanPham"
+                                     class="form-control" aria-label="Default select example">
+                            <form:options items="${listSP}" itemLabel="ten" itemValue="id"
+                                          selected="${sanPham == ct.sanPham ? 'selected' : ''}"/>
+                        </form:select>
+                    </div>
+                    <div>
+                        <label class="form-label">Hãng</label>
+                        <form:select path="hang"
+                                     class="form-control" aria-label="Default select example">
+                            <form:options items="${listHang}" itemLabel="ten" itemValue="id"
+                                          selected="${hang == ct.hang ? 'selected' : ''}"/>
+                        </form:select>
+                    </div>
+                    <div>
+                        <label class="form-label">Kích thước</label>
+                        <form:select path="kichThuoc"
+                                     class="form-control" aria-label="Default select example">
+                            <form:options items="${listKT}" itemLabel="ten" itemValue="id"
+                                          selected="${kichThuoc == ct.kichThuoc ? 'selected' : ''}"/>
+                        </form:select>
+                    </div>
+                    <div>
+                        <label class="form-label">Màu sắc</label>
+                        <form:select path="mauSac"
+                                     class="form-control" aria-label="Default select example">
+                            <form:options items="${listMauSac}" itemValue="id" itemLabel="ten"
+                                          selected="${mauSac == ct.mauSac ? 'selected' : ''}"/>
+                        </form:select>
+                    </div>
+                    <div>
+                        <label class="form-label">Nhà Cung Cấp</label>
+                        <form:select path="nhaCungCap"
+                                     class="form-control" aria-label="Default select example">
+                            <form:options items="${listNCC}" itemLabel="ten" itemValue="id"
+                                          selected="${nhaCungCap == ct.nhaCungCap ? 'selected' : ''}"/>
+                        </form:select>
+                    </div>
+                    <div>
+                        <label class="form-label">Chất Liệu</label>
+                        <form:select path="chatLieu"
+                                     class="form-control" aria-label="Default select example">
+                            <form:options items="${listChatLieu}" itemLabel="ten" itemValue="id"
+                                          selected="${chatLieu == ct.chatLieu ? 'selected' : ''}"/>
+                        </form:select>
+                    </div>
+                    <div>
+                        <label class="form-label">Số lượng</label>
+                        <form:input type="number" path="soLuong" class="form-control"/>
+                        <form:errors path="soLuong" cssStyle="font-weight: bold;color: red"/>
+                    </div>
+                    <div>
+                        <label class="form-label">Đơn giá</label>
+                        <form:input type="number" path="donGia" class="form-control"/>
+                        <form:errors path="donGia" cssStyle="font-weight: bold;color: red"/>
+                    </div>
+                    <div>
+                        <label class="form-label">Giá bán</label>
+                        <form:input type="number" path="giaBan" class="form-control"/>
+                        <form:errors path="giaBan" cssStyle="font-weight: bold;color: red"/>
+                    </div>
+                    <div>
+                        <label class="form-label">Mô tả</label>
+                        <form:input path="moTa" class="form-control"/>
+                        <form:errors path="moTa" cssStyle="font-weight: bold;color: red"/>
+                    </div>
+                    <br>
+                    <div>
+                        <input type="file" name="anh" id="file" class="inputfile"/>
+                        <label for="file">Chọn ảnh</label>
+                    </div>
+                    <button class="btn btn-success">Cập nhật</button>
+                </form:form>
+            </div>
+        </section>
+        <!-- /.content -->
     </div>
-    <div>
-        <form method="post" action="/mau-sac/import"
-            enctype="multipart/form-data">
-            <input type="file" name="file" /> <input type="submit"
-                value="Import" />
-        </form>
-    </div> --%>
-</section>
+    <!-- /.content-wrapper -->
 
-<!-- end product section -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 
-
-<!-- info section -->
-<section class="info_section " style="margin-top: 100px">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
-				<div class="info_contact">
-					<h5>
-						<a href="" class="navbar-brand">
-                <span>
-                  Minics
-                </span>
-						</a>
-					</h5>
-					<p>
-						<i class="fa fa-map-marker" aria-hidden="true"></i>
-						Address
-					</p>
-					<p>
-						<i class="fa fa-phone" aria-hidden="true"></i>
-						+01 1234567890
-					</p>
-					<p>
-						<i class="fa fa-envelope" aria-hidden="true"></i>
-						demo@gmail.com
-					</p>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="info_info">
-					<h5>
-						Information
-					</h5>
-					<p>
-						Eligendi sunt, provident, debitis nemo, facilis cupiditate velit libero dolorum aperiam enim
-						nulla iste maxime corrupti ad illo libero minus.
-					</p>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="info_links">
-					<h5>
-						Useful Link
-					</h5>
-					<ul>
-						<li>
-							<a href="indext.jsp">
-								Home
-							</a>
-						</li>
-						<li>
-							<a href="about.jsp">
-								About
-							</a>
-						</li>
-						<li>
-							<a href="product.jsp">
-								Products
-							</a>
-						</li>
-						<li>
-							<a href="why.jsp">
-								Why Us
-							</a>
-						</li>
-						<li>
-							<a href="testimonial.jsp">
-								Testimonial
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="info_form ">
-					<h5>
-						Newsletter
-					</h5>
-					<form action="">
-						<input type="email" placeholder="Enter your email">
-						<button>
-							Subscribe
-						</button>
-					</form>
-					<div class="social_box">
-						<a href="">
-							<i class="fa fa-facebook" aria-hidden="true"></i>
-						</a>
-						<a href="">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
-						</a>
-						<a href="">
-							<i class="fa fa-instagram" aria-hidden="true"></i>
-						</a>
-						<a href="">
-							<i class="fa fa-youtube" aria-hidden="true"></i>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- end info_section -->
-
-
-<!-- footer section -->
-<footer class="footer_section">
-	<div class="container">
-		<p>
-			&copy; <span id="displayYear"></span> All Rights Reserved By
-			<a href="https://html.design/">Free Html Templates</a>
-		</p>
-	</div>
-</footer>
-<!-- footer section -->
-
-<!-- jQery -->
-<script src="../../../../../js/jquery-3.4.1.min.js"></script>
-<!-- bootstrap js -->
-<script src="../../../../../js/bootstrap.js"></script>
-<!-- custom js -->
-<script src="../../../../../js/custom.js"></script>
-
-
+<!-- jQuery -->
+<script src="../../../../../plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../../../../../plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="../../../../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="../../../../../plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="../../../../../plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="../../plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="../../plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../../plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../../plugins/moment/moment.min.js"></script>
+<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script
+        src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script
+        src="../../plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../../dist/js/pages/dashboard.js"></script>
 </body>
-
 </html>
+
+
+
+

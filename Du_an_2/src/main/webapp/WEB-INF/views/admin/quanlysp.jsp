@@ -305,11 +305,13 @@
                         <td><fmt:formatNumber type="currency" value="${ct.giaBan}"
                                               pattern="#,###"/>VNĐ
                         </td>
-                        <td><a type="button" href="/ctsp/delete/${ct.id}"
-                               class="btn btn-danger">Hủy</a> <a type="button"
-                                                                 href="/ctsp/form-update/${ct.id}"
-                                                                 class="btn btn-primary">Cập
-                            nhật</a></td>
+                        <td>
+                            <a type="button"
+                               href="/ctsp/delete/${ct.id}" class="btn btn-danger" data-toggle="tooltip" title="Xóa"><i
+                                    class="fa fa-trash"></i></a> <a type="button"
+                                                                    href="/ctsp/form-update/${ct.id}"
+                                                                    class="btn btn-primary" data-toggle="tooltip" title="Cập nhật"><i class="fa fa-pencil"></i></a>
+                        </td>
                             <%--                    <td>--%>
                             <%--                        <a type="button"--%>
                             <%--                           href="/ctsp/form-update"--%>
@@ -357,12 +359,15 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/../plugins/jquery/jquery.min.js"></script>
+<script src="../../../plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="/../plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../../plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 <!-- Bootstrap 4 -->
 <script src="/../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

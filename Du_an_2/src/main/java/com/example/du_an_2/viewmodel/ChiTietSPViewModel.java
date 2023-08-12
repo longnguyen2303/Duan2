@@ -1,7 +1,7 @@
 package com.example.du_an_2.viewmodel;
 
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,15 +28,22 @@ public class ChiTietSPViewModel {
 
     private UUID chatLieu;
 
+    @Positive(message = "Số lượng phải lớn hơn 0")
     private int soLuong;
 
+    @NotNull(message = "Không được để trống trường này")
+    @Positive(message = "Giá nhập phải lớn hơn 0")
     private BigDecimal donGia;
 
+    @NotNull(message = "Không được để trống trường này")
+    @Positive(message = "Giá nhập phải lớn hơn 0")
     private BigDecimal giaBan;
 
+//    @NotNull(message = "Vui lòng chọn 1 ảnh")
     private String hinhAnh;
 
     @NotBlank(message = "Không được để trống trường này")
+    @Positive(message = "Giá nhập phải lớn hơn 0")
     private String moTa;
 
     private int trangThai;

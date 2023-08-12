@@ -26,6 +26,7 @@ public class AdminQLNhanVienController {
         NhanVienViewModel nhanVienViewModel = new NhanVienViewModel();
         model.addAttribute("nv", nhanVienViewModel);
         model.addAttribute("listNV", nhanVienRepository.findAll());
+        model.addAttribute("status", false);
         return "admin/quanlynv/quanlynv";
     }
 
@@ -33,6 +34,8 @@ public class AdminQLNhanVienController {
     public String addNV(@Valid @ModelAttribute("nv") NhanVienViewModel nhanVienViewModel, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             model.addAttribute("listNV", nhanVienRepository.findAll());
+            model.addAttribute("status", true
+            );
             return "admin/quanlynv/quanlynv";
         }else{
             NhanVien nhanVien = new NhanVien();

@@ -84,7 +84,7 @@ public class HomeControllerAdmin {
 
 	@GetMapping("dashboard/quanlysp")
 	public String qlsp(Model model, @RequestParam(name = "page", defaultValue = "0") Integer pageNo) {
-		Pageable pageable = PageRequest.of(pageNo, 5, Sort.by(Sort.Direction.ASC, "lastModifiedDate"));
+		Pageable pageable = PageRequest.of(pageNo, 4, Sort.by(Sort.Direction.DESC, "lastModifiedDate"));
 		Page<ChiTietSP> page = ctspRepository.findAll(pageable);
 		model.addAttribute("listCTSP", page);
 		return "admin/quanlysp";
@@ -120,7 +120,7 @@ public class HomeControllerAdmin {
 			model.addAttribute("listSP", sanPhamRepository.findAll());
 			model.addAttribute("listKT", kichThuocRepository.findAll());
 			model.addAttribute("listChatLieu", chatLieuRepository.findAll());
-			return "admin/crud/chitietsanpham/ctsp-add";
+			return "admin/addsp";
 		} else {
 			MauSac mauSac = mauSacRepository.findById(UUID.fromString(idmauSac)).orElse(null);
 			SanPham sanPham = sanPhamRepository.findById(UUID.fromString(idsanPham)).orElse(null);

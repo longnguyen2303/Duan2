@@ -276,7 +276,8 @@
                     <th>Email</th>
                     <th>Địa chỉ</th>
                     <th>SĐT</th>
-                    <th>Hành động</th>
+                    <th colspan="1">Hành động</th>
+                    <th></th>
                     </thead>
                     <tbody>
                     <c:forEach items="${listNV}" var="nv">
@@ -287,6 +288,13 @@
                             <td>${nv.email}</td>
                             <td>${nv.diaChi}</td>
                             <td>${nv.sdt}</td>
+                            <td>
+                            <a type="button"
+                               href="#" class="btn btn-danger" data-toggle="tooltip" title="Ngừng hoạt động"><i
+                                    class="fa fa-trash"></i></a> <a type="button"
+                                                                    href="#"
+                                                                    class="btn btn-primary" data-toggle="tooltip" title="Cập nhật"><i class="fa fa-pencil"></i></a>
+                            </td>
                             <td>
                                 <a type="button" class="btn btn-success">Thêm tài khoản</a>
                             </td>
@@ -409,6 +417,18 @@
     //         });
     //     });
     // });
+    let error = ${status};
+    $(document).ready(function () {
+        console.log(error);
+        if (error == true) {
+            $('#largeModal').modal({
+                show: true
+            });
+        }
+    });
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
